@@ -1,0 +1,42 @@
+# Fichiers générés par Hugo
+/public/
+/resources/_gen/
+
+# Cache et fichiers temporaires
+/.hugo_build.lock
+/.cache/
+
+# Environnements virtuels et dépendances locales
+/node_modules/
+/vendor/
+
+# Fichiers de configuration locaux
+/config.toml.local
+/config.yaml.local
+/config.json.local
+
+# Fichiers IDE/éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers d'environnement
+.env
+.env.*
+
+# Images optimisées (si tu les génères automatiquement)
+/assets/images/optimized/
+
+# Fichiers de build et logs
+/dist/
+/tmp/
+*.log
+
+# Fichiers de déploiement (si tu les génères automatiquement)
+/deploy/

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ .Site.Title }}</title>
+    <link rel="icon" type="image/svg" href="/images/favicon.svg" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .grid-pattern {
+        background-image: radial-gradient(circle, #e2e2da 1.4px, transparent 1px);
+        background-size: 30px 30px;
+      }
+
+      .glow-cyan {
+        box-shadow: 0 4px 15px rgba(0, 149, 168, 0.15);
+      }
+    </style>
+  </head>
+  <body class="bg-background-light text-charcoal transition-colors duration-300">
+    {{ partial "header.html" . }}
+    <main class="relative">{{ block "main" . }}{{ end }} {{ partial "footer.html" . }}</main>
+  </body>
+</html>

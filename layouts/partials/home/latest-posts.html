@@ -1,0 +1,53 @@
+<section class="py-24 grid-pattern bg-background-light" id="blog">
+    <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight mb-4 text-charcoal">Derniers Articles</h2>
+                <div class="h-1 w-20 bg-primary"></div>
+            </div>
+            <a class="text-primary font-bold flex items-center gap-2 hover:underline" href="/blog/">
+                Tout voir <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+            <article class="group bg-surface-warm border border-border-light rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg transition-all flex flex-col">
+                    <div class="h-52 overflow-hidden relative">
+    <!-- Recherche de l'image de couverture dans le dossier de l'article -->
+    {{ $cover := .Resources.GetMatch (.Params.image | default "cover.*") }}
+    {{ if $cover }}
+        {{ $resized := $cover.Resize "800x" }}
+        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+             src="{{ $resized.RelPermalink }}"
+             alt="{{ .Title }}"
+             loading="lazy">
+    {{ else }}
+        <div class="w-full h-full bg-surface-grey flex items-center justify-center">
+            <span class="material-symbols-outlined text-charcoal/10 text-6xl">image</span>
+        </div>
+    {{ end }}
+    <!-- Affichage du premier tag -->
+    <div class="absolute top-4 left-4">
+        {{ if .Params.tags }}
+            <span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-primary uppercase tracking-widest rounded shadow-sm border border-border-light">
+                {{ index .Params.tags 0 }}
+            </span>
+        {{ end }}
+    </div>
+</div>
+                <div class="p-6 bg-white flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3 text-[11px] font-medium text-charcoal/40">
+                        <span class="material-symbols-outlined text-sm">calendar_today</span> {{ .Date.Format "02 Jan 2006" }}
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-charcoal group-hover:text-primary transition-colors leading-tight">{{ .Title }}</h3>
+                    <p class="text-sm text-charcoal/60 mb-6 line-clamp-3 leading-relaxed">{{ .Description }}</p>
+                    <div class="mt-auto pt-4 border-t border-border-light/50 flex justify-between items-center">
+                        <a href="{{ .RelPermalink }}" class="text-sm font-bold text-primary flex items-center gap-1">Lire l'article <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                        <span class="text-[12px] font-mono text-charcoal/50">{{ .ReadingTime }} min read</span>
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>

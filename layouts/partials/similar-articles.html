@@ -1,0 +1,29 @@
+<div class="bg-white p-6 rounded-2xl border border-border-light shadow-sm">
+  <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+    <span class="material-symbols-outlined text-primary">article</span> Articles Similaires
+  </h3>
+  <div class="space-y-6">
+    {{ range first 2 (where .Site.Pages "Section" "blog") }}
+    {{ $cover := .Resources.GetMatch (.Params.image | default "cover.*") }}
+    
+    <a class="group block" href="{{ .RelPermalink }}">
+      <div class="flex gap-4">
+        <div class="size-16 rounded-lg overflow-hidden flex-shrink-0 border border-border-light">
+            {{ if $cover }}
+      <img alt="{{ .Title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform" src="{{ $cover.RelPermalink }}"/>
+      {{ end }}
+        </div>
+        <div>
+          <h4 class="text-sm font-bold group-hover:text-primary transition-colors leading-snug">{{ .Title }}</h4>
+          <span class="text-[10px] text-charcoal/40 uppercase tracking-widest font-bold">
+{{ if .Params.tags }}
+    {{ range first 1 .Params.tags }}{{ . }}{{ end }}
+  {{ else }}
+    {{ "Aucun tag" }}  <!-- Ou un tag par défaut -->
+  {{ end }}        </span>
+        </div>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</div>

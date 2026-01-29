@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary: #0095a8;
+  --color-background-light: #fdfbf7;
+  --color-sufrace-light: #f3f0e9;
+  --color-surface-grey: #eaeaec;
+  --color-charcoal: #2d3436;
+  --color-border-light: #e2e2da;
+  --color-accent-blue: #00d4ff;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: theme('colors.charcoal');
+}
+
+.grid-pattern {
+  background-image: radial-gradient(circle, #e2e2da 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.glow-cyan {
+  box-shadow: 0 4px 15px rgba(0, 149, 168, 0.15);
+}

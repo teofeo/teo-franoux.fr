@@ -1,0 +1,132 @@
+{{ define "title" }}Blog - {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<main class="flex-grow">
+    <section class="pt-16 grid-pattern">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="max-w-3xl">
+                <h1
+                    class="text-5xl font-bold tracking-tighter text-charcoal mb-4">
+                    Blog &amp; <span class="text-primary">Insights</span>
+                </h1>
+                <p class="text-lg text-charcoal/70 leading-relaxed">
+                    Partage d'expériences sur l'automatisation, l'orchestration
+                    de conteneurs et les architectures cloud natives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Filtres -->
+    {{/*  <section
+        class="sticky top-[73px] z-40 bg-background-light/95 backdrop-blur-sm border-y border-border-light py-4">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div
+                class="flex items-center gap-4 overflow-x-auto no-scrollbar pb-1">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-charcoal/40 whitespace-nowrap">Filtrer
+                    par :</span>
+                <div class="flex gap-2">
+                    <a href="{{ .Permalink }}"
+                        class="px-4 py-1.5 rounded-full text-sm font-bold bg-accent-blue text-white shadow-sm transition-all">Tous</a>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize
+                        }}"
+                        class="px-4 py-1.5 rounded-full text-sm font-bold bg-surface-light border border-border-light text-charcoal/70 hover:border-primary/50 transition-all whitespace-nowrap">
+                        {{ $name }}
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </section>  */}}
+
+    <!-- Section Articles -->
+    <section class="py-16">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{ range .Pages }}
+                <article
+                    class="group bg-surface-warm border border-border-light rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg transition-all flex flex-col">
+                    <div class="h-52 overflow-hidden relative">
+                        <!-- Recherche de l'image de couverture dans le dossier de l'article -->
+                        {{ $cover := .Resources.GetMatch (.Params.image |
+                        default "cover.*") }}
+                        {{ if $cover }}
+                        {{ $resized := $cover.Resize "800x" }}
+                        <img
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="{{ $resized.RelPermalink }}"
+                            alt="{{ .Title }}"
+                            loading="lazy">
+                        {{ else }}
+                        <div
+                            class="w-full h-full bg-surface-grey flex items-center justify-center">
+                            <span
+                                class="material-symbols-outlined text-charcoal/10 text-6xl">image</span>
+                        </div>
+                        {{ end }}
+                        <!-- Affichage du premier tag -->
+                        <div class="absolute top-4 left-4">
+                            {{ if .Params.tags }}
+                            <span
+                                class="px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-primary uppercase tracking-widest rounded shadow-sm border border-border-light">
+                                {{ index .Params.tags 0 }}
+                            </span>
+                            {{ end }}
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div
+                            class="flex items-center gap-2 mb-3 text-[11px] font-medium text-charcoal/40">
+                            <span
+                                class="material-symbols-outlined text-sm">calendar_today</span>
+                            {{ .Date.Format "02 Jan 2006" }}
+                        </div>
+                        <h3
+                            class="text-xl font-bold mb-3 text-charcoal group-hover:text-primary transition-colors leading-tight">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </h3>
+                        <p
+                            class="text-sm text-charcoal/60 mb-6 line-clamp-3 leading-relaxed">
+                            {{ .Description }}
+                        </p>
+                        <div
+                            class="mt-auto pt-4 border-t border-border-light/50 flex justify-between items-center">
+                            <a href="{{ .RelPermalink }}"
+                                class="text-xs font-bold text-primary flex items-center gap-1">
+                                Lire l'article <span
+                                    class="material-symbols-outlined text-xs">arrow_forward</span>
+                            </a>
+                            <span
+                                class="text-[10px] font-mono text-charcoal/30">
+                                {{ .ReadingTime }} min read
+                            </span>
+                        </div>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+
+            <!-- Pagination -->
+            {{ if or .PrevInSection .NextInSection }}
+            <div class="mt-16 flex justify-center gap-2">
+                {{ if .PrevInSection }}
+                <a href="{{ .PrevInSection.Permalink }}"
+                    class="size-10 flex items-center justify-center rounded-lg border border-border-light text-charcoal/40 hover:text-primary hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </a>
+                {{ end }}
+                {{ if .NextInSection }}
+                <a href="{{ .NextInSection.Permalink }}"
+                    class="size-10 flex items-center justify-center rounded-lg border border-border-light text-charcoal/40 hover:text-primary hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </section>
+</main>
+{{ end }}

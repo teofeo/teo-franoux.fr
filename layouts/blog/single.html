@@ -1,0 +1,101 @@
+{{ define "main" }}
+<main>
+  <header
+    class="relative pt-16 pb-12 grid-pattern border-b border-border-light bg-surface-warm/30">
+    <div class="max-w-[800px] mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6">
+        {{ range first 1 .Params.tags }}
+        <span
+          class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">
+          {{ . }}
+        </span>
+        {{ end }}
+        <span class="text-xs text-charcoal/50 flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          {{ .Date.Format "2 janvier 2006" }}
+        </span>
+        <span class="text-xs text-charcoal/50 flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">schedule</span>
+          {{ .ReadingTime }} min de lecture
+        </span>
+      </div>
+
+      <!-- Titre -->
+      <h1
+        class="text-4xl lg:text-6xl font-bold leading-tight tracking-tighter text-charcoal mb-8">
+        {{ .Title }}
+      </h1>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <div
+    class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 py-16">
+    <article class="lg:col-span-8">
+      <!-- Image de couverture -->
+      {{ $cover := .Resources.GetMatch (.Params.image | default "cover.*") }}
+      {{ if $cover }}
+      <div
+        class="mb-12 rounded-2xl overflow-hidden shadow-xl border border-border-light">
+        <img alt="{{ .Title }}" class="w-full aspect-video object-cover"
+          src="{{ $cover.RelPermalink }}" />
+      </div>
+      {{ end }}
+
+      <!-- Contenu de l'article -->
+      <div class="prose max-w-none">
+        {{ .Content }}
+      </div>
+
+      <!-- Section auteur -->
+      <div
+        class="mt-20 p-8 rounded-2xl bg-surface-warm border border-border-light flex flex-col md:flex-row gap-6 items-center md:items-start">
+        <div
+          class="size-24 rounded-2xl overflow-hidden flex-shrink-0 border-4 border-white shadow-md">
+          <img alt="{{ .Site.Params.author.name }}"
+            class="w-full h-full object-cover grayscale"
+            src="{{ .Site.Params.author.image | relURL }}" />
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">À propos de l'auteur</h3>
+          <p class="text-charcoal/70 text-sm leading-relaxed mb-4">
+            {{ .Site.Params.author_bio}}
+          </p>
+          <div class="flex gap-4">
+            <a
+              class="text-primary hover:text-accent-blue transition-colors flex items-center gap-1 text-sm font-bold"
+              href="{{ .Site.Params.author.social_linkedin }}" target="_blank">
+              LinkedIn <span
+                class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+            <a
+              class="text-primary hover:text-accent-blue transition-colors flex items-center gap-1 text-sm font-bold"
+              href="{{ .Site.Params.author.social_github }}" target="_blank">
+              GitHub <span
+                class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="lg:col-span-4 space-y-12">
+      {{ partial "similar-articles.html" . }}
+
+      <div>
+        <h3
+          class="text-xs font-bold text-charcoal/40 uppercase tracking-widest mb-4">Tags
+          Populaires</h3>
+        <div class="flex flex-wrap gap-2">
+          {{ range .Params.tags }}
+          <span
+            class="px-3 py-1 bg-surface-warm text-charcoal/70 text-xs rounded-full border border-border-light cursor-pointer hover:border-primary transition-colors">
+            {{ . }}
+          </span>
+          {{ end }}
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+{{ end }}

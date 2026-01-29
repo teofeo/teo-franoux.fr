@@ -1,0 +1,38 @@
+baseURL = 'https://teo-franoux.fr/'
+languageCode = 'fr'
+title = 'Téo Franoux | Infrastructure & DevOps'
+
+[menu]
+  [[menu.main]]
+    name = "Accueil"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+paginate = 6
+
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+  anchor = "Smart"
+
+[params]
+  [params.author]
+    name = "Téo Franoux"
+    title = "Ingénieur Infrastructure & DevOps"
+    image = "/images/profile.jpg"
+    author_bio = "Étudiant passionné par l'automatisation et les infrastructures Cloud Native."
+    social_linkedin = "https://www.linkedin.com/in/téo-franoux"
+    social_github = "https://github.com/teofeo"
+
+[markup]
+  [markup.highlight]
+    style = "dracula" # ou un autre thème
+    guessSyntax = true

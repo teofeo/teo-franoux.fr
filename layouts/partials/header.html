@@ -1,0 +1,107 @@
+<header
+    x-data="{ open: false }"
+    class="sticky top-0 z-50 w-full border-b border-border-light bg-background-light/80 backdrop-blur-md"
+>
+    <div class="max-w-[1200px] mx-auto flex items-center justify-between px-6 py-4 relative">
+        <div class="flex items-center gap-3">
+            <div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+                <span class="material-symbols-outlined">terminal</span>
+            </div>
+            <h1 class="text-2xl md:text-lg lg:text-xl xl:text-2xl font-bold tracking-tight text-charcoal">Téo Franoux</h1>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 lg:gap-10">
+            <a
+                href="/"
+                class="text-sm lg:text-base font-medium text-charcoal/80 hover:text-primary transition-colors"
+            >Accueil</a>
+            <a
+                href="/#about"
+                class="text-sm lg:text-base font-medium text-charcoal/80 hover:text-primary transition-colors"
+            >À propos</a>
+            <a
+                href="/#homelab"
+                class="text-sm lg:text-base font-medium text-charcoal/80 hover:text-primary transition-colors"
+            >HomeLab</a>
+            <a
+                href="/#experience"
+                class="text-sm lg:text-base font-medium text-charcoal/80 hover:text-primary transition-colors"
+            >Expériences</a>
+            <a
+                href="/blog"
+                class="text-sm lg:text-base font-medium text-charcoal/80 hover:text-primary transition-colors"
+            >Blog</a>
+            <a
+                href="/#contact"
+                class="text-sm md:text-base font-medium text-charcoal/80 hover:text-primary transition-colors"
+            >Contact</a>
+        </nav>
+
+        <a
+            href="./cv.pdf"
+            download="Téo_Franoux_CV.pdf"
+            class="hidden md:block bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg text-sm lg:text-base font-bold transition-all glow-cyan"
+        >
+            Télécharger CV
+        </a>
+
+        <button
+            @click="open = !open"
+            class="md:hidden text-charcoal focus:outline-none"
+        >
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+
+        <div
+            x-show="open"
+            @click.away="open = false"
+            x-transition:enter="transition ease-out duration-200 transform"
+            x-transition:enter-start="opacity-0 -translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150 transform"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="md:hidden absolute top-full left-0 right-0 bg-background-light/95 border-b border-border-light shadow-lg z-50"
+        >
+            <div class="flex flex-col gap-1 px-6 py-4">
+                <a
+                    href="/"
+                    @click="open = false"
+                    class="text-sm font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+                >Accueil</a>
+                <a
+                    href="/#about"
+                    @click="open = false"
+                    class="text-sm font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+                >À propos</a>
+                <a
+                    href="/#homelab"
+                    @click="open = false"
+                    class="text-sm font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+                >HomeLab</a>
+                <a
+                    href="/#experience"
+                    @click="open = false"
+                    class="text-sm font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+                >Expériences</a>
+                <a
+                    href="/blog"
+                    @click="open = false"
+                    class="text-sm font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+                >Blog</a>
+                <a
+                    href="/#contact"
+                    @click="open = false"
+                    class="text-sm font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+                >Contact</a>
+                <a
+                    href="./cv.pdf"
+                    download="Téo_Franoux_CV.pdf"
+                    @click="open = false"
+                    class="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg text-sm font-bold transition-all glow-cyan w-fit mt-2"
+                >
+                    Télécharger CV
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

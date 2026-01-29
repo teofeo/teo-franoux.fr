@@ -1,0 +1,12 @@
+- title: "Diplôme d'Expert en Informatique"
+  institution: "Epitech Digital University"
+  period: "2022-2025"
+  description: "Formation en informatique..."
+  active: true
+  weight: 1
+- title: "Certificat en informatique"
+  institution: "Ulaval Quebec"
+  period: "2025-2026"
+  description: "Etudiant en échange universitaire"
+  active: true
+  weight: 2
