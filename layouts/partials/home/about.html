@@ -1,62 +1,91 @@
-<section class="py-24 bg-surface-light/30" id="about">
-    <div class="max-w-[1200px] mx-auto px-6">
-        <div class="mb-16">
-            <h2
-                class="text-3xl font-bold tracking-tight mb-4 text-charcoal">À propos de moi</h2>
-            <div class="h-1 w-20 bg-primary"></div>
-        </div>
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div
-                class="bg-white border border-border-light p-6 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
-                <span
-                    class="material-symbols-outlined text-primary mb-4 text-3xl">user_attributes</span>
-                <h3 class="text-lg font-bold mb-2 text-charcoal">Qui
-                    suis-je ?</h3>
-                <p
-                    class="text-charcoal/60 text-sm leading-relaxed">Étudiant
-                    en DevOps curieux et rigoureux, spécialisé dans
-                    l'optimisation des flux de déploiement.</p>
-            </div>
-            <div
-                class="bg-white border border-border-light p-6 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
-                <span
-                    class="material-symbols-outlined text-primary mb-4 text-3xl">target</span>
-                <h3 class="text-lg font-bold mb-2 text-charcoal">Mes
-                    objectifs</h3>
-                <p
-                    class="text-charcoal/60 text-sm leading-relaxed">Devenir
-                    un expert en Cloud Native et automatisation
-                    CI/CD à l'échelle internationale.</p>
-            </div>
-            <div
-                class="bg-white border border-border-light p-6 rounded-xl hover:border-primary/50 transition-colors shadow-sm">
-                <span
-                    class="material-symbols-outlined text-primary mb-4 text-3xl">favorite</span>
-                <h3 class="text-lg font-bold mb-2 text-charcoal">Ce
-                    que j’aime</h3>
-                <p
-                    class="text-charcoal/60 text-sm leading-relaxed">L'open-source,
-                    les défis techniques complexes et l'architecture
-                    logicielle propre.</p>
-            </div>
-            <div
-                class="bg-white border-2 border-yellow-500/20 p-6 rounded-xl relative overflow-hidden group shadow-sm">
-                <div
-                    class="absolute -right-4 -bottom-4 opacity-5 group-hover:rotate-12 transition-transform">
-                    <span
-                        class="material-symbols-outlined text-8xl text-yellow-600">dinner_dining</span>
-                </div>
-                <span
-                    class="material-symbols-outlined text-yellow-600 mb-4 text-3xl">restaurant</span>
-                <h3
-                    class="text-lg font-bold mb-2 text-charcoal">Détail
-                    surprenant</h3>
-                <p
-                    class="text-charcoal/60 text-sm leading-relaxed">Expert
-                    certifié en cuisson de pâtes (al dente
-                    uniquement, pas de compromis).</p>
-            </div>
-        </div>
+<section class="lg:py-24 py-12 bg-" id="about">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold tracking-tight mb-4 text-charcoal">
+        À propos de <span class="text-primary">moi</span>
+      </h2>
+      <div class="h-1 w-20 bg-primary"></div>
     </div>
+
+    <div class="flex flex-col lg:flex-row gap-12 items-start">
+      <div class="lg:w-2/3 space-y-8">
+        <div class="bg-white p-8 rounded-2xl border border-border-light shadow-sm">
+          <div class="flex items-start gap-6">
+            <div
+              class="hidden sm:flex w-12 h-12 bg-primary/10 rounded-lg items-center justify-center text-primary shrink-0"
+            >
+              <span class="material-symbols-outlined">terminal</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-charcoal">L'ingénieur derrière l'infra</h3>
+              <p class="text-charcoal/70 leading-relaxed">
+                Étudiant à <span class="text-charcoal font-semibold">Epitech</span> et passionné par l'infrastructure
+                informatique, je me spécialise dans la culture <span class="text-charcoal font-semibold">DevOps</span>.
+                Curieux de nature, je ne me contente pas de la théorie : je gère mon propre
+                <span class="text-charcoal font-semibold">Homelab</span> pour tester, casser et reconstruire des
+                solutions concrètes. Mon objectif ? Dompter la complexité du Cloud pour rendre les déploiements
+                invisibles et infaillibles.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-border-light shadow-sm">
+            <span class="material-symbols-outlined text-primary mb-3">cloud_sync</span>
+            <h4 class="font-bold text-charcoal mb-2">Ma vision Cloud</h4>
+            <p class="text-charcoal/60 text-sm">
+              Maîtriser l'automatisation avec <strong>Terraform</strong> et <strong>Ansible</strong> pour transformer
+              l'infrastructure en code (IaC) pur et scalable.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-border-light shadow-sm">
+            <span class="material-symbols-outlined text-primary mb-3">volunteer_activism</span>
+            <h4 class="font-bold text-charcoal mb-2">Engagement Open Source</h4>
+            <p class="text-charcoal/60 text-sm">
+              Convaincu par la puissance du partage, je privilégie les solutions open-source et l'apprentissage continu
+              par la communauté.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/3 w-full space-y-6">
+        <div class="bg-primary text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+          <h3 class="text-xl font-bold mb-4 relative z-10">Ce qui me drive</h3>
+          <ul class="space-y-4 relative z-10 opacity-90">
+            <li class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-sm">check_circle</span>
+              <span>L'Infrastructure as Code</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-sm">check_circle</span>
+              <span>L'auto-hébergement (Homelab)</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-sm">check_circle</span>
+              <span>L'automatisation radicale</span>
+            </li>
+          </ul>
+          <span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/10 text-9xl">dns</span>
+        </div>
+
+        <div class="bg-white border-2 border-yellow-500/20 p-6 rounded-2xl relative overflow-hidden group">
+          <div class="absolute -right-2 -bottom-2 opacity-10 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-6xl text-yellow-600">dinner_dining</span>
+          </div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="material-symbols-outlined text-yellow-600">restaurant</span>
+            <h3 class="font-bold text-charcoal italic text-sm uppercase tracking-wider">Le secret du chef</h3>
+          </div>
+          <p class="text-charcoal/60 text-sm leading-relaxed">
+            Expert certifié en cuisson de pâtes (<span class="text-charcoal font-bold underline decoration-yellow-500"
+              >al dente</span
+            >
+            uniquement). Pas de compromis sur la qualité, en prod comme en cuisine.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

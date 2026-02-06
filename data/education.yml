@@ -1,12 +1,8 @@
-- title: "Diplôme d'Expert en Informatique"
-  institution: "Epitech Digital University"
-  period: "2022-2025"
-  description: "Formation en informatique..."
-  active: true
-  weight: 1
+- title: "Diplôme d'Expert en technologies de l'information"
+  institution: "Epitech, Nancy - France"
+  period: "2022-2027"
+  description: "Formation d'expertise informatique par projets, centrée sur l’autonomie et l’innovation logicielle."
 - title: "Certificat en informatique"
-  institution: "Ulaval Quebec"
+  institution: "Université Laval, Québec - Canada"
   period: "2025-2026"
-  description: "Etudiant en échange universitaire"
-  active: true
-  weight: 2
+  description: "Échange académique international visant à approfondir mes connaissances en informatique"

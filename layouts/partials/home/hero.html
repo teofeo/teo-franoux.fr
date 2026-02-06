@@ -1,53 +1,47 @@
-<section class="relative overflow-hidden pt-20 pb-32 grid-pattern">
-    <div
-        class="max-w-[1200px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-        <div class="flex-1 space-y-8">
-            <div
-                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                Disponible pour de nouveaux défis
-            </div>
-            <h1
-                class="text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tighter text-charcoal">
-                Ingénieur <span
-                    class="text-primary">Infrastructure</span> &amp;
-                DevOps
-            </h1>
-            <p
-                class="text-lg text-charcoal/70 max-w-xl leading-relaxed">
-                Étudiant passionné par l'automatisation, le cloud
-                computing et l'administration système. Je construis
-                des infrastructures scalables et résilientes.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a
-                    href="#experience"
-                    class="bg-primary text-white px-8 py-4 rounded-lg font-bold hover:scale-105 transition-transform flex items-center gap-2 glow-cyan"
-                    >
-                    Voir mes expériences
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </a>
-                <button
-                    class="bg-surface-light border border-border-light text-charcoal px-8 py-4 rounded-lg font-bold hover:bg-border-light transition-colors">
-                    Télécharger mon CV
-                </button>
-            </div>
-        </div>
-        <div class="flex-1 relative">
-            <div
-                class="relative z-10 w-full aspect-square max-w-[450px] mx-auto rounded-2xl overflow-hidden border-4 border-white shadow-2xl">
-                <img
-                    class="w-full h-full object-cover hover:grayscale-0 transition-all duration-500"
-                    data-alt="Portrait professionnel de Téo Franoux ingénieur DevOps"
-                    src="./images/profile.jpg" />
-            </div>
-            <div
-                class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-primary/40 rounded-tr-xl"></div>
-            <div
-                class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary/40 rounded-bl-xl"></div>
-        </div>
+<section class="relative overflow-hidden pt-14 pb-24 grid-pattern">
+  <div class="max-w-[1200px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+    <div class="flex-1 space-y-8">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        Disponible pour de nouveaux défis
+      </div>
+      <h1 class="text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tighter text-charcoal">
+        Ingénieur <span class="text-primary">Infrastructure</span> &amp; DevOps
+      </h1>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="#experience"
+          class="bg-primary text-white px-8 py-4 rounded-lg font-bold hover:scale-105 transition-transform flex items-center gap-2 glow-cyan"
+        >
+          Voir mes expériences
+          {{ readFile "static/icons/material/arrow_forward.svg" | safeHTML }}
+        </a>
+        <a
+          href="/files/cv.pdf"
+          download="Téo_Franoux_CV.pdf"
+          class="bg-surface-light border border-border-light text-charcoal px-8 py-4 rounded-lg font-bold hover:bg-border-light transition-colors"
+        >
+          Télécharger mon CV
+        </a>
+      </div>
     </div>
+    <div class="flex-1 relative">
+      <div
+        class="relative z-10 w-full aspect-square max-w-[450px] mx-auto rounded-2xl overflow-hidden border-4 border-white shadow-2xl"
+      >
+        <img
+          class="w-full h-full object-cover hover:grayscale-0 transition-all duration-500"
+          data-alt="Portrait professionnel de Téo Franoux ingénieur DevOps"
+          src="./images/profile.jpg"
+        />
+      </div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-primary/40 rounded-tr-xl"></div>
+      <div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary/40 rounded-bl-xl"></div>
+    </div>
+  </div>
 </section>

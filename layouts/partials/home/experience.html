@@ -1,56 +1,55 @@
-<section class="py-24 bg-surface-grey/20" id="experience">
-    <div class="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16">
-        <div>
-            <h2 class="text-3xl font-bold tracking-tight mb-12 flex items-center gap-3 text-charcoal">
-                <span class="material-symbols-outlined text-primary">work</span>
-                Parcours Pro
-            </h2>
-            <div class="space-y-12 border-l-2 border-border-light ml-4">
-                {{ range .Site.Data.experiences }}
-                <div class="relative pl-10">
-                    <div
-                        class="absolute left-[-6px] top-0 size-[11px] rounded-full bg-primary shadow-[0_0_8px_rgba(0,149,168,0.5)]bg-border-light">
-                    </div>
-                    <span
-                        class="text-xs font-bold text-primary mb-2 block uppercase tracking-widest">{{
-                        .period }}</span>
-                    <h3
-                        class="text-xl font-bold text-charcoal">{{
-                        .title }}</h3>
-                    <p class="text-charcoal/80 font-medium">{{ .company
-                        }}</p>
-                    <p
-                        class="text-sm text-charcoal/50 mt-2 leading-relaxed">{{
-                        .description }}</p>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-        <div>
-            <h2 class="text-3xl font-bold tracking-tight mb-12 flex items-center gap-3 text-charcoal">
-                <span class="material-symbols-outlined text-primary">school</span>
-                Formation
-            </h2>
-            <div class="space-y-12 border-l-2 border-border-light ml-4">
-                {{ range .Site.Data.education }}
-                <div class="relative pl-10">
-                    <div
-                        class="absolute left-[-6px] top-0 size-[11px] rounded-full {{ if .active }}bg-primary shadow-[0_0_8px_rgba(0,149,168,0.5)]{{ else }}bg-border-light{{ end }}">
-                    </div>
-                    <span
-                        class="text-xs font-bold {{ if .active }}text-primary{{ else }}text-charcoal/40{{ end }} mb-2 block uppercase tracking-widest">{{
-                        .period }}</span>
-                    <h3 class="text-xl font-bold {{ if .active }}text-charcoal{{ else }}text-charcoal/70{{ end }}">{{
-                        .title }}</h3>
-                    <p class="text-charcoal/80 font-medium">{{ .institution
-                        }}</p>
-                    <p
-                        class="text-sm {{ if .active }}text-charcoal/50{{ else }}text-charcoal/40{{ end }} mt-2 leading-relaxed">{{
-                        .description }}</p>
-                </div>
-                {{ end }}
-            </div>
-
-        </div>
+<section class="lg:py-24 py-12 bg-surface-grey/20" id="experience">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold tracking-tight mb-4 text-charcoal">Expériences & <span class="text-primary">Formations</span></h2>
+      <div class="h-1 w-20 bg-primary"></div>
     </div>
+    <div class="grid md:grid-cols-2 gap-16">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight mb-12 flex items-center gap-3 text-charcoal">
+          <span class="material-symbols-outlined text-primary">work</span>
+          Parcours Pro
+        </h2>
+        <div class="space-y-12 border-l-2 border-border-light ml-4">
+          {{ range .Site.Data.experiences }}
+          <div class="relative pl-10">
+            <div
+              class="absolute left-[-6px] top-0 size-[11px] rounded-full bg-primary shadow-[0_0_8px_rgba(0,149,168,0.5)]"
+            ></div>
+            <span class="text-xs font-bold text-primary mb-2 block uppercase tracking-widest">{{ .period }}</span>
+            <h3 class="text-xl font-bold text-charcoal">{{ .title }}</h3>
+            <p class="text-charcoal/80 font-medium">{{ .company }}</p>
+            <p class="text-sm text-charcoal/50 mt-2 leading-relaxed">{{ .description }}</p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight mb-12 flex items-center gap-3 text-charcoal">
+          <span class="material-symbols-outlined text-primary">school</span>
+          Formation
+        </h2>
+        <div class="space-y-12 border-l-2 border-border-light ml-4">
+          {{ range .Site.Data.education }}
+          <div class="relative pl-10">
+            <div
+              class="absolute left-[-6px] top-0 size-[11px] rounded-full bg-primary shadow-[0_0_8px_rgba(0,149,168,0.5)]"
+            ></div>
+            <span
+              class="text-xs font-bold text-primary mb-2 block uppercase tracking-widest"
+              >{{ .period }}</span
+            >
+            <h3 class="text-xl font-bold text-charcoal">
+              {{ .title }}
+            </h3>
+            <p class="text-charcoal/80 font-medium">{{ .institution }}</p>
+            <p class="text-sm text-charcoal/50 mt-2 leading-relaxed">
+              {{ .description }}
+            </p>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

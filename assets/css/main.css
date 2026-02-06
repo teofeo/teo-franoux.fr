@@ -33,3 +33,9 @@ body {
 .glow-cyan {
   box-shadow: 0 4px 15px rgba(0, 149, 168, 0.15);
 }
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}

@@ -35,12 +35,3 @@ paginate = 6
 [markup]
   [markup.highlight]
     style = "dracula" # ou un autre thème
-    
-[minify]
-  disableCSS = false
-  disableJS = false
-  minifyOutput = true
-
-[build]
-  writeStats = true
-  useResourceCacheWhen = "fallback"

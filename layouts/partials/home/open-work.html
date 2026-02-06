@@ -1,0 +1,75 @@
+<section class="lg:py-24 py-12  bg-primary">
+  <div class="max-w-[1200px] mx-auto px-6">
+    {{ range .Site.Data.openwork }}
+
+    <div
+      class="bg-background-light border border-border-light rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row gap-10 items-center mb-6"
+    >
+      <div class="flex-1 space-y-5">
+        <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+          </span>
+          Disponible
+        </div>
+
+        <h2 class="text-3xl font-bold text-charcoal">Recherche de <span class="text-primary">{{ .title }}</span></h2>
+
+        <p class="text-charcoal/70 text-base max-w-md leading-relaxed">{{ .description }}</p>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a
+            href="/#contact"
+            class="px-6 py-3 bg-primary text-white font-semibold rounded-xl shadow-md hover:shadow-xl hover:bg-opacity-90 active:opacity-100 transition duration-300 ease-in-out text-sm"
+          >
+            Me contacter
+          </a>
+
+          <a
+            href="/files/cv.pdf"
+            class="px-6 py-3 bg-surface-grey/30 border border-border-light text-charcoal font-semibold rounded-xl hover:bg-white hover:border-primary/30 hover:shadow-sm active:bg-surface-grey transition duration-300 ease-in-out text-sm"
+          >
+            Consulter le CV
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="flex items-center gap-3 p-4 bg-white border border-border-light rounded-xl">
+          <span class="material-symbols-outlined text-primary">terminal</span>
+          <div>
+            <p class="text-[10px] uppercase font-bold text-charcoal/40">Secteur</p>
+            <p class="text-sm font-bold text-charcoal">{{ .secteur }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-4 bg-white border border-border-light rounded-xl">
+          <span class="material-symbols-outlined text-primary">location_on</span>
+          <div>
+            <p class="text-[10px] uppercase font-bold text-charcoal/40">Lieu</p>
+            <p class="text-sm font-bold text-charcoal">{{ .lieu }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-4 bg-white border border-border-light rounded-xl">
+          <span class="material-symbols-outlined text-primary">schedule</span>
+          <div>
+            <p class="text-[10px] uppercase font-bold text-charcoal/40">Dispo</p>
+            <p class="text-sm font-bold text-charcoal">{{ .disponibilite }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-4 bg-white border border-border-light rounded-xl">
+          <span class="material-symbols-outlined text-primary">calendar_month</span>
+          <div>
+            <p class="text-[10px] uppercase font-bold text-charcoal/40">Période</p>
+            <p class="text-sm font-bold text-charcoal">{{ .periode }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ end }}
+  </div>
+</section>

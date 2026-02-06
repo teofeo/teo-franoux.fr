@@ -62,8 +62,8 @@
                         {{ else }}
                         <div
                             class="w-full h-full bg-surface-grey flex items-center justify-center">
-                            <span
-                                class="material-symbols-outlined text-charcoal/10 text-6xl">image</span>
+                                    {{ readFile "static/icons/material/image.svg" | safeHTML }}
+    
                         </div>
                         {{ end }}
                         <!-- Affichage du premier tag -->

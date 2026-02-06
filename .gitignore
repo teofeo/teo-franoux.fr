@@ -40,3 +40,6 @@ desktop.ini
 
 # Fichiers de déploiement (si tu les génères automatiquement)
 /deploy/
+
+# Windows files
+*.Identifier

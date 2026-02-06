@@ -1,51 +1,70 @@
-<section class="py-24 grid-pattern" id="homelab">
-    <div class="max-w-[1200px] mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2
-                    class="text-3xl font-bold tracking-tight mb-6 uppercase text-charcoal">Infrastructure
-                    <span class="text-primary">HomeLab</span></h2>
-                <p class="text-charcoal/60 mb-8 leading-relaxed">
-                    Mon terrain de jeu technologique où je teste les
-                    dernières solutions de virtualisation et
-                    d'orchestration avant leur mise en production.
-                </p>
-                <div class="space-y-4">
-                    <div
-                        class="flex gap-4 p-4 rounded-lg bg-white border-l-4 border-primary shadow-sm border border-border-light">
-                        <div
-                            class="size-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <span
-                                class="material-symbols-outlined text-primary">storage</span>
-                        </div>
-                        <div>
-                            <h4
-                                class="font-bold text-charcoal">MS-A2
-                                Minisforum</h4>
-                            <p
-                                class="text-sm text-charcoal/50">Proxmox
-                                VE | 64GB RAM | AMD Ryzen 9 | 2TB
-                                NVMe</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flex gap-4 p-4 rounded-lg bg-white border-l-4 border-surface-grey shadow-sm border border-border-light">
-                        <div
-                            class="size-12 rounded-full bg-surface-grey/50 flex items-center justify-center flex-shrink-0">
-                            <span
-                                class="material-symbols-outlined text-charcoal/40">developer_board</span>
-                        </div>
-                        <div>
-                            <h4
-                                class="font-bold text-charcoal">Cluster
-                                Raspberry Pi 5</h4>
-                            <p class="text-sm text-charcoal/50">K3s
-                                Orchestration | Alpine Linux | PoE+
-                                Driven</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="lg:py-32 py-16 bg-slate-50 overflow-hidden" id="homelab">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold tracking-tight mb-4 text-charcoal">
+        Infrastructure <span class="text-primary">Homelab</span>
+      </h2>
+      <div class="h-1 w-20 bg-primary"></div>
     </div>
+
+    <div class="space-y-32">
+      <div class="group relative flex flex-col lg:flex-row items-center gap-12">
+        <div class="lg:w-1/2 z-10">
+          <div class="mb-6">
+            <h3 class="text-3xl font-bold text-charcoal">Minisforum MS-A2</h3>
+            <span class="text-primary font-bold tracking-widest text-xs uppercase">Hyperviseur Principal</span>
+          </div>
+          <p class="text-charcoal/70 leading-relaxed mb-8 max-w-lg">
+            Véritable pilier de mon infrastructure sous <strong>Proxmox VE</strong>, ce nœud me sert de laboratoire pour
+            simuler des environnements d'entreprise. J'y déploie des VMs via <strong>Terraform</strong> et automatise la
+            configuration avec <strong>Ansible</strong>. Je pilote également un environnement
+            <strong>Docker/Portainer</strong> pour tester des solutions comme <strong>Beszel</strong>, plaçant
+            l'observabilité et l'Infrastructure as Code (IaC) au cœur de mon apprentissage.
+          </p>
+        </div>
+        <div class="lg:w-1/2 relative">
+          <div
+            class="absolute -inset-4 bg-primary/5 rounded-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500"
+          ></div>
+          <div class="relative h-[350px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white">
+            <img
+              src="/images/ms-a2.jpg"
+              alt="MS-A2"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative flex flex-col-reverse lg:flex-row items-center gap-12">
+        <div class="lg:w-1/2 relative">
+          <div
+            class="absolute -inset-4 bg-charcoal/5 rounded-2xl -rotate-3 group-hover:rotate-0 transition-transform duration-500"
+          ></div>
+          <div class="relative h-[350px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white">
+            <img
+              src="/images/raspberry.jpg"
+              alt="RPi 5"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 z-10 lg:pl-12">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-6 h-1 bg-primary"></span>
+            <span class="text-primary font-bold tracking-widest text-xs uppercase">Serveur Secondaire</span>
+          </div>
+          <h3 class="text-3xl font-bold text-charcoal mb-6">Raspberry Pi 4 (8gb ram)</h3>
+          <p class="text-charcoal/70 leading-relaxed mb-8 max-w-lg">
+            Premier pilier de mon apprentissage, ce node a évolué d'un simple serveur web vers une station de
+            <strong>CI/CD dédiée</strong>. Il a propulsé mes pipelines de déploiement pour mes projets
+            <strong>Epitech</strong>, automatisant le cycle de vie applicatif du build au hosting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
