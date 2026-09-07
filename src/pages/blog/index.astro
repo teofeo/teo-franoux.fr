@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import PostGrid from "@/components/blog/PostGrid.astro";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout
+    title="Blog - Téo Franoux"
+    description="Articles sur le DevOps, l'infrastructure, le cloud et mon homelab."
+>
+    <section class="mx-auto max-w-screen-2xl px-4 py-20">
+        <header class="max-w-2xl">
+            <p class="text-sm font-medium text-muted-foreground">
+                Mes articles
+            </p>
+
+            <h1 class="mt-2 text-4xl font-bold tracking-tight">Blog</h1>
+
+            <p class="mt-4 text-muted-foreground">
+                Mes articles sur l'infrastructure, le DevOps, le cloud et mes
+                différents projets.
+            </p>
+        </header>
+        <div class="mt-12">
+            <PostGrid posts={sortedPosts} />
+        </div>
+    </section>
+</Layout>

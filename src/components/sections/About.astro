@@ -1,0 +1,72 @@
+---
+import AboutTimeline from "@/components/about/AboutTimeline.astro";
+---
+
+<section id="about" class="border-y border-border bg-muted/20">
+    <div class="mx-auto max-w-7xl px-4 py-20 md:py-28">
+        <!-- Introduction -->
+        <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+                <p class="text-sm text-primary">01 / À propos</p>
+
+                <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+                    Un parcours construit autour de l'expérimentation.
+                </h2>
+            </div>
+
+            <div class="max-w-2xl space-y-5 text-muted-foreground">
+                <p>
+                    Je suis <strong class="text-foreground">Téo Franoux</strong
+                    >, étudiant en informatique à <strong
+                        class="text-foreground">Epitech</strong
+                    >. Je m'intéresse particulièrement à l'automatisation, à
+                    l'infrastructure et à la manière dont les systèmes peuvent
+                    être conçus et opérés de façon reproductible.
+                </p>
+
+                <p>
+                    C'est pendant mes deux stages chez <strong
+                        class="text-foreground"
+                        >Société Générale Luxembourg</strong
+                    > que j'ai réellement découvert le monde du DevOps. Ces expériences
+                    m'ont donné envie de comprendre ce qui se passe derrière les applications
+                    : les systèmes, le réseau, le déploiement et l'automatisation.
+                </p>
+
+                <p>
+                    En quatrième année, je suis parti étudier à <strong
+                        class="text-foreground">l'Université Laval</strong
+                    >
+                    au Québec. Cette expérience internationale m'a permis d'élargir
+                    mon parcours tout en continuant à développer mes compétences techniques.
+                </p>
+
+                <p>
+                    De retour en France, j'ai commencé à construire mon propre
+                    homelab autour d'un <strong class="text-foreground">
+                        Minisforum MS-A2
+                    </strong>
+                    et de Proxmox. C'est aujourd'hui mon principal terrain d'expérimentation
+                    pour le réseau, les systèmes, l'infrastructure as code et le DevOps.
+                </p>
+            </div>
+        </div>
+
+        <!-- Parcours -->
+        <div class="mt-20 md:mt-28">
+            <div class="mb-10 flex items-end justify-between gap-6">
+                <div>
+                    <p class="text-sm text-primary">02 / Parcours</p>
+
+                    <h3
+                        class="mt-2 text-2xl font-bold tracking-tight md:text-3xl"
+                    >
+                        De l'informatique au DevOps.
+                    </h3>
+                </div>
+            </div>
+
+            <AboutTimeline />
+        </div>
+    </div>
+</section>

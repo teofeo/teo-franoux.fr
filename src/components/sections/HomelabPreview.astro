@@ -1,0 +1,166 @@
+---
+import { ArrowUpRight, Boxes, Network, Server, Workflow } from "lucide-astro";
+---
+
+<section class="mx-auto max-w-screen-xl px-4 py-20 md:py-28">
+    <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <!-- Introduction -->
+        <div class="max-w-xl">
+            <p class="font-mono text-sm text-primary">homelab/</p>
+
+            <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+                Mon terrain d'expérimentation.
+            </h2>
+
+            <div class="mt-6 space-y-4 text-muted-foreground">
+                <p>
+                    Après avoir découvert le DevOps pendant mes stages, j'ai
+                    commencé à construire mon propre environnement pour pouvoir
+                    expérimenter librement.
+                </p>
+
+                <p>
+                    Aujourd'hui, mon homelab me permet de travailler sur des
+                    problématiques très différentes : réseau, administration
+                    système, virtualisation, infrastructure as code et DevOps.
+                </p>
+            </div>
+
+            <a
+                href="/homelab"
+                class="group mt-8 inline-flex items-center gap-2 text-sm font-medium hover:text-primary"
+            >
+                Découvrir mon homelab
+
+                <ArrowUpRight
+                    class="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+            </a>
+        </div>
+
+        <!-- Architecture -->
+        <div class="relative py-8">
+            <!-- Central machine -->
+            <div class="flex justify-center">
+                <div class="relative z-10 text-center">
+                    <div
+                        class="mx-auto flex size-20 items-center justify-center rounded-2xl border border-border bg-background"
+                    >
+                        <Server class="size-8" />
+                    </div>
+
+                    <p class="mt-4 font-semibold">Minisforum MS-A2</p>
+
+                    <p class="mt-1 font-mono text-xs text-muted-foreground">
+                        Proxmox VE
+                    </p>
+                </div>
+            </div>
+
+            <!-- Connector -->
+            <div aria-hidden="true" class="mx-auto h-12 w-px bg-border"></div>
+
+            <!-- Domains -->
+            <div class="grid grid-cols-3">
+                <!-- Networking -->
+                <div class="relative text-center">
+                    <div
+                        aria-hidden="true"
+                        class="absolute left-1/2 top-0 h-px w-full bg-border"
+                    >
+                    </div>
+
+                    <div
+                        aria-hidden="true"
+                        class="absolute left-1/2 top-0 h-6 w-px bg-border"
+                    >
+                    </div>
+
+                    <div class="relative pt-8">
+                        <Network class="mx-auto size-5 text-primary" />
+
+                        <p class="mt-3 text-sm font-semibold">Networking</p>
+
+                        <p
+                            class="mt-2 font-mono text-[11px] leading-5 text-muted-foreground"
+                        >
+                            DNS<br />
+                            VLAN<br />
+                            Routing
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sysadmin -->
+                <div class="relative text-center">
+                    <div
+                        aria-hidden="true"
+                        class="absolute left-1/2 top-0 h-6 w-px bg-border"
+                    >
+                    </div>
+
+                    <div class="relative pt-8">
+                        <Boxes class="mx-auto size-5 text-primary" />
+
+                        <p class="mt-3 text-sm font-semibold">Sysadmin</p>
+
+                        <p
+                            class="mt-2 font-mono text-[11px] leading-5 text-muted-foreground"
+                        >
+                            Linux<br />
+                            VMs<br />
+                            Storage
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="relative text-center">
+                    <div
+                        aria-hidden="true"
+                        class="absolute right-1/2 top-0 h-px w-full bg-border"
+                    >
+                    </div>
+
+                    <div
+                        aria-hidden="true"
+                        class="absolute left-1/2 top-0 h-6 w-px bg-border"
+                    >
+                    </div>
+
+                    <div class="relative pt-8">
+                        <Workflow class="mx-auto size-5 text-primary" />
+
+                        <p class="mt-3 text-sm font-semibold">DevOps</p>
+
+                        <p
+                            class="mt-2 font-mono text-[11px] leading-5 text-muted-foreground"
+                        >
+                            Terraform<br />
+                            Ansible<br />
+                            Docker
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="mt-12 flex flex-wrap justify-center gap-x-5 gap-y-2">
+                {
+                    [
+                        "Proxmox",
+                        "Terraform",
+                        "Ansible",
+                        "Docker",
+                        "Kubernetes",
+                        "Linux",
+                    ].map((technology) => (
+                        <span class="font-mono text-xs text-muted-foreground">
+                            {technology}
+                        </span>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

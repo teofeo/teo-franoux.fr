@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import PostGrid from "@/components/blog/PostGrid.astro";
+
+const posts = await getCollection("blog");
+
+const latestPosts = posts
+  .sort(
+    (a, b) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  )
+  .slice(0, 3);
+---
+
+<section class="mx-auto max-w-screen-xl px-4 py-16 md:py-24">
+  <div class="mb-10 flex items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-medium text-primary">
+        Blog
+      </p>
+
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">
+        Derniers articles
+      </h2>
+
+      <p class="mt-3 text-muted-foreground">
+        Mes dernières publications.
+      </p>
+    </div>
+
+    <a
+      href="/blog"
+      class="hidden text-sm font-medium hover:text-primary sm:block"
+    >
+      Voir tous les articles →
+    </a>
+  </div>
+
+  <PostGrid posts={latestPosts} />
+
+  <a
+    href="/blog"
+    class="mt-8 block text-center text-sm font-medium hover:text-primary sm:hidden"
+  >
+    Voir tous les articles →
+  </a>
+</section>

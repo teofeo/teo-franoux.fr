@@ -1,0 +1,41 @@
+---
+import { navigation } from "@/config/navigation";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+    class="hidden items-center gap-x-6 md:flex"
+    aria-label="Navigation principale"
+>
+    {
+        navigation.map((item) => {
+            const isActive =
+                item.href === "/"
+                    ? currentPath === "/"
+                    : currentPath.startsWith(item.href);
+
+            return (
+                <a
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    class:list={[
+                        "group relative font-medium text-sm transition-colors",
+                        isActive
+                            ? "text-foreground"
+                            : "text-muted-foreground hover:text-foreground",
+                    ]}
+                >
+                    {item.label}
+
+                    <span
+                        class:list={[
+                            "absolute -bottom-2 left-0 h-0.5 bg-primary transition-all duration-300",
+                            isActive ? "w-full" : "w-0 group-hover:w-full",
+                        ]}
+                    />
+                </a>
+            );
+        })
+    }
+</nav>

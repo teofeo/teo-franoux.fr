@@ -1,0 +1,75 @@
+---
+import { Workflow, Server, Network, Cloud } from "lucide-astro";
+---
+
+<section class="mt-16">
+    <div class="mb-8">
+        <p class="text-sm font-medium text-primary">Ce qui m'intéresse</p>
+
+        <h3 class="mt-2 text-2xl font-bold tracking-tight">
+            Construire des systèmes automatisés
+        </h3>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+        <article class="rounded-xl border border-border p-5">
+            <Workflow class="size-5" />
+
+            <h4 class="mt-4 font-semibold">Automatisation</h4>
+
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                Automatiser les tâches répétitives et transformer les opérations
+                manuelles en processus reproductibles.
+            </p>
+
+            <p class="mt-4 font-mono text-xs text-muted-foreground">
+                Ansible · CI/CD · GitHub Actions
+            </p>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+            <Server class="size-5" />
+
+            <h4 class="mt-4 font-semibold">Infrastructure</h4>
+
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                Déployer et administrer des environnements virtualisés et des
+                systèmes Linux.
+            </p>
+
+            <p class="mt-4 font-mono text-xs text-muted-foreground">
+                Proxmox · Linux · Terraform
+            </p>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+            <Network class="size-5" />
+
+            <h4 class="mt-4 font-semibold">Réseau</h4>
+
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                Expérimenter avec le DNS, les réseaux virtuels, le routage et
+                les différents composants d'une infrastructure.
+            </p>
+
+            <p class="mt-4 font-mono text-xs text-muted-foreground">
+                DNS · VLAN · Routing · Reverse Proxy
+            </p>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+            <Cloud class="size-5" />
+
+            <h4 class="mt-4 font-semibold">Cloud</h4>
+
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                Comprendre les concepts cloud et apprendre à les appliquer à
+                travers des projets personnels.
+            </p>
+
+            <p class="mt-4 font-mono text-xs text-muted-foreground">
+                AWS · Containers · Kubernetes
+            </p>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import type { Project } from "@/data/projects";
+
+interface Props {
+    project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article
+    class="group rounded-xl border border-border p-6 transition-colors hover:bg-accent/50"
+>
+    <div class="flex items-start justify-between gap-4">
+        <h2 class="font-semibold tracking-tight">
+            {project.title}
+        </h2>
+
+        {
+            project.github && (
+                <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-muted-foreground transition-colors hover:text-primary"
+                    aria-label={`GitHub de ${project.title}`}
+                >
+                    GitHub &#x2192;
+                </a>
+            )
+        }
+    </div>
+
+    <p class="mt-3 text-sm leading-6 text-muted-foreground">
+        {project.description}
+    </p>
+
+    <div class="mt-5 flex flex-wrap gap-2">
+        {
+            project.technologies.map((technology) => (
+                <span class="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
+                    {technology}
+                </span>
+            ))
+        }
+    </div>
+</article>

@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ProjectGrid from "@/components/projects/ProjectGrid.astro";
+---
+
+<Layout title="Projets — Téo Franoux" description="Les projets de Téo Franoux.">
+    <section class="mx-auto max-w-screen-2xl px-4 py-20">
+        <header class="max-w-2xl">
+            <p class="text-sm font-medium text-muted-foreground">Portfolio</p>
+
+            <h1 class="mt-2 text-4xl font-bold tracking-tight">Projets</h1>
+
+            <p class="mt-4 text-muted-foreground">
+                Une sélection de projets personnels et académiques autour du
+                développement, du DevOps et de l'infrastructure.
+            </p>
+        </header>
+
+        <div class="mt-12">
+            <ProjectGrid />
+        </div>
+    </section>
+</Layout>
