@@ -1,0 +1,98 @@
+---
+import type { Page, GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import ProjectGrid from "@/components/projects/ProjectGrid.astro";
+import SearchBar from "@/components/blog/SearchBar.astro";
+import Pagination from "@/components/blog/Pagination.astro";
+import PageHero from "@/components/page/PageHero.astro";
+import InfoGrid from "@/components/page/InfoGrid.astro";
+
+import { FolderGit2, CalendarDays, Tags } from "lucide-astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    const projects = await getCollection("projects");
+
+    const sortedProjects = projects.sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    );
+
+    return paginate(sortedProjects, { pageSize: 9 });
+}) satisfies GetStaticPaths;
+
+interface Props {
+    page: Page<CollectionEntry<"projects">>;
+}
+
+const { page } = Astro.props;
+
+const projects = await getCollection("projects");
+
+const sortedProjects = projects.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const latestProject = sortedProjects[0];
+
+const tags = [...new Set(projects.flatMap((project) => project.data.tags))];
+
+const features = [
+    {
+        icon: FolderGit2,
+        label: "Projets",
+        title: "Mes réalisations et expérimentations",
+    },
+    {
+        icon: CalendarDays,
+        label: "Dernière publication",
+        title: latestProject
+            ? latestProject.data.pubDate.toLocaleDateString("fr-FR", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+              })
+            : "—",
+    },
+    {
+        icon: Tags,
+        label: "Technologies utilisées",
+        title:
+            tags.length > 0
+                ? tags.slice(0, 4).join(" · ")
+                : "DevOps · Infrastructure · Cloud",
+    },
+];
+---
+
+<Layout
+    title="Projets - Téo Franoux"
+    description="Mes projets personnels et professionnels autour du DevOps, de l'infrastructure et du cloud."
+>
+    <main>
+        <PageHero
+            eyebrow="Mes réalisations"
+            title="Projets"
+            description="Découvrez mes projets personnels et professionnels, mes expérimentations et mes contributions open-source."
+        />
+
+        <InfoGrid features={features} />
+
+        <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
+            <div class="mt-8 max-w-xl">
+                <SearchBar />
+            </div>
+
+            <div class="mt-12">
+                <ProjectGrid projects={page.data} />
+            </div>
+
+            <Pagination
+                currentPage={page.currentPage}
+                totalPages={page.lastPage}
+                baseUrl="/projects"
+            />
+        </section>
+    </main>
+</Layout>

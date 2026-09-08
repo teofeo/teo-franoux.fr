@@ -1,6 +1,12 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import ProjectCard from "./ProjectCard.astro";
-import { projects } from "@/data/projects";
+
+interface Props {
+    projects: CollectionEntry<"projects">[];
+}
+
+const { projects } = Astro.props;
 ---
 
 <div class="grid gap-6 md:grid-cols-3">

@@ -1,47 +1,53 @@
 ---
-import type { Project } from "@/data/projects";
+import type { CollectionEntry } from "astro:content";
+import { Github, ExternalLink } from "lucide-astro";
 
 interface Props {
-    project: Project;
+    project: CollectionEntry<"projects">;
 }
 
 const { project } = Astro.props;
+const projectUrl = `/projects/${project.id}`;
 ---
 
-<article
-    class="group rounded-xl border border-border p-6 transition-colors hover:bg-accent/50"
+<a
+    href={projectUrl}
+    class="group block rounded-xl border border-border p-6 transition-colors hover:bg-accent/50"
 >
-    <div class="flex items-start justify-between gap-4">
-        <h2 class="font-semibold tracking-tight">
-            {project.title}
-        </h2>
+    <article>
+        <div class="flex items-start justify-between gap-4">
+            <h2 class="font-semibold tracking-tight group-hover:text-primary transition-colors">
+                {project.data.title}
+            </h2>
 
-        {
-            project.github && (
-                <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-muted-foreground transition-colors hover:text-primary"
-                    aria-label={`GitHub de ${project.title}`}
-                >
-                    GitHub &#x2192;
-                </a>
-            )
-        }
-    </div>
+            <div class="flex gap-2 items-center text-muted-foreground">
+                {project.data.github && <Github class="h-4 w-4" />}
+                {project.data.website && <ExternalLink class="h-4 w-4" />}
+            </div>
+        </div>
 
-    <p class="mt-3 text-sm leading-6 text-muted-foreground">
-        {project.description}
-    </p>
+        <p class="mt-3 text-sm leading-6 text-muted-foreground">
+            {project.data.description}
+        </p>
 
-    <div class="mt-5 flex flex-wrap gap-2">
-        {
-            project.technologies.map((technology) => (
-                <span class="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
-                    {technology}
-                </span>
-            ))
-        }
-    </div>
-</article>
+        <div class="mt-5 flex flex-wrap gap-2">
+            {
+                project.data.tags.map((tag) => (
+                    <span class="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
+                        {tag}
+                    </span>
+                ))
+            }
+        </div>
+
+        <p class="mt-4 text-xs text-muted-foreground">
+            {
+                project.data.pubDate.toLocaleDateString("fr-FR", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                })
+            }
+        </p>
+    </article>
+</a>
