@@ -14,7 +14,7 @@ const latestPosts = posts
 
 <section class="mx-auto max-w-7xl px-4 py-16 md:py-24">
   <div class="mb-10 flex items-end justify-between gap-4">
-    <div>
+    <div class="animate-fade-up">
       <p class="text-sm font-medium text-primary">
         Blog
       </p>
@@ -30,7 +30,7 @@ const latestPosts = posts
 
     <a
       href="/blog"
-      class="hidden text-sm font-medium hover:text-primary sm:block"
+      class="hidden text-sm font-medium transition-smooth hover:text-primary hover:translate-x-1 sm:block animate-fade-up animation-delay-200"
     >
       Voir tous les articles →
     </a>
@@ -40,7 +40,7 @@ const latestPosts = posts
 
   <a
     href="/blog"
-    class="mt-8 block text-center text-sm font-medium hover:text-primary sm:hidden"
+    class="mt-8 block text-center text-sm font-medium transition-smooth hover:text-primary sm:hidden"
   >
     Voir tous les articles →
   </a>

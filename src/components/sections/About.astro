@@ -2,16 +2,19 @@
 import AboutTimeline from "@/components/about/AboutTimeline.astro";
 ---
 
-<section id="about" class="border-y border-border bg-muted/20">
-    <div class="mx-auto max-w-7xl px-4 my-20 md:my-28">
-        <div class="mb-10 max-w-2xl">
-            <p class="text-sm text-primary">La timeline/</p>
+<section id="about" class="border-y border-border bg-muted/20 relative overflow-hidden">
+    <!-- Effet de gradient en arrière-plan -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none"></div>
 
-            <h3 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+    <div class="mx-auto max-w-7xl px-4 my-20 md:my-28 relative z-10">
+        <div class="mb-10 max-w-2xl animate-fade-up">
+            <p class="text-sm text-primary font-medium">La timeline/</p>
+
+            <h3 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl animate-fade-up animation-delay-100">
                 De l'informatique au DevOps.
             </h3>
 
-            <p class="mt-4 text-muted-foreground">
+            <p class="mt-4 text-muted-foreground animate-fade-up animation-delay-200">
                 Un parcours construit progressivement, du développement logiciel
                 vers l'infrastructure, l'automatisation et le Cloud Native.
             </p>

@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import ProjectGrid from "@/components/projects/ProjectGrid.astro";
+import { ArrowUpRight } from "lucide-astro";
+
+const projects = await getCollection("projects");
+
+const featuredProjects = projects
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+---
+
+<section class="mx-auto max-w-7xl px-4 py-16 md:py-24">
+    <div class="mb-10 flex items-end justify-between gap-4">
+        <div class="animate-fade-up">
+            <p class="text-sm font-medium text-primary">Projets/</p>
+
+            <h2 class="mt-2 text-3xl font-bold tracking-tight">
+                Projets en vedette
+            </h2>
+
+            <p class="mt-3 text-muted-foreground">
+                Une sélection de mes projets les plus significatifs.
+            </p>
+        </div>
+
+        <a
+            href="/projects"
+            class="group hidden items-center gap-2 text-sm font-medium transition-smooth hover:text-primary sm:flex animate-fade-up animation-delay-200"
+        >
+            Voir tous les projets
+            <ArrowUpRight
+                class="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+        </a>
+    </div>
+
+    <ProjectGrid projects={featuredProjects} />
+
+    <a
+        href="/projects"
+        class="mt-8 block text-center text-sm font-medium transition-smooth hover:text-primary sm:hidden"
+    >
+        Voir tous les projets →
+    </a>
+</section>

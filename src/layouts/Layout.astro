@@ -60,6 +60,45 @@ const { title = siteConfig.title, description = siteConfig.description } =
         </main>
 
         <MobileNav />
+        <Footer />
+
+        <script>
+            // Amélioration du header au scroll
+            let lastScroll = 0;
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.scrollY;
+
+                if (currentScroll > 100) {
+                    header?.classList.add('shadow-soft');
+                } else {
+                    header?.classList.remove('shadow-soft');
+                }
+
+                lastScroll = currentScroll;
+            });
+
+            // Observation pour les animations au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observer les sections
+            document.querySelectorAll('section').forEach(section => {
+                if (!section.classList.contains('animate-fade-up')) {
+                    observer.observe(section);
+                }
+            });
+        </script>
     </body>
-    <Footer />
 </html>

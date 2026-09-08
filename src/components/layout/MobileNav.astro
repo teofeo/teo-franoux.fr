@@ -3,7 +3,7 @@ import { navigation } from "@/config/navigation";
 ---
 
 <nav
-    class="fixed bottom-0 left-0 z-50 w-full border-t border-border bg-background/95 p-2 backdrop-blur md:hidden"
+    class="fixed bottom-0 left-0 z-50 w-full border-t border-border bg-background/95 p-2 backdrop-blur-xl shadow-soft md:hidden"
     aria-label="Navigation mobile"
 >
     <div class="mx-auto flex h-16 max-w-screen-sm items-center justify-between">
@@ -22,19 +22,19 @@ import { navigation } from "@/config/navigation";
                         aria-label={item.label}
                         aria-current={isActive ? "page" : undefined}
                         class:list={[
-                            "relative flex min-h-12 w-full flex-col items-center justify-center transition-colors duration-200",
+                            "relative flex min-h-12 w-full flex-col items-center justify-center transition-smooth",
                             isActive
                                 ? "font-semibold text-primary"
-                                : "text-muted-foreground hover:text-foreground",
+                                : "text-muted-foreground hover:text-foreground active:scale-95",
                         ]}
                     >
                         <span
                             class:list={[
-                                "flex size-9 items-center justify-center rounded-full transition",
-                                isActive ? "bg-primary/10" : "bg-transparent",
+                                "flex size-9 items-center justify-center rounded-full transition-smooth",
+                                isActive ? "bg-primary/10 shadow-glow" : "bg-transparent hover:bg-muted",
                             ]}
                         >
-                            <Icon class="size-5" />
+                            <Icon class="size-5 transition-transform" class:list={[isActive ? "scale-110" : ""]} />
                         </span>
 
                         <span class="max-w-[90%] truncate text-center text-[10px] leading-tight">
@@ -42,7 +42,7 @@ import { navigation } from "@/config/navigation";
                         </span>
 
                         {isActive && (
-                            <span class="absolute -bottom-2 left-1/2 h-1 w-6 -translate-x-1/2 rounded-full bg-primary" />
+                            <span class="absolute -bottom-2 left-1/2 h-1 w-6 -translate-x-1/2 rounded-full bg-primary shadow-glow animate-fade-in" />
                         )}
                     </a>
                 );

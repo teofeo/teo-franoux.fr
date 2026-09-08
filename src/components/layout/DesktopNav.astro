@@ -20,20 +20,23 @@ const currentPath = Astro.url.pathname;
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     class:list={[
-                        "group relative font-medium text-sm transition-colors",
+                        "group relative font-medium text-sm transition-colors-smooth",
                         isActive
                             ? "text-foreground"
                             : "text-muted-foreground hover:text-foreground",
                     ]}
                 >
-                    {item.label}
+                    <span class="relative z-10">{item.label}</span>
 
                     <span
                         class:list={[
-                            "absolute -bottom-2 left-0 h-0.5 bg-primary transition-all duration-300",
-                            isActive ? "w-full" : "w-0 group-hover:w-full",
+                            "absolute -bottom-2 left-0 h-0.5 bg-primary transition-all duration-300 ease-out",
+                            isActive ? "w-full shadow-glow" : "w-0 group-hover:w-full",
                         ]}
                     />
+
+                    {/* Effet de brillance au survol */}
+                    <span class="absolute inset-0 -z-0 rounded-md bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
             );
         })

@@ -3,13 +3,13 @@ const { post } = Astro.props;
 ---
 
 <article
-    class="group rounded-xl border border-border p-6 transition-colors hover:bg-muted/50"
+    class="group relative overflow-hidden rounded-xl border border-border p-6 transition-smooth hover:bg-muted/50 hover-lift hover:shadow-soft hover:border-primary/30"
     data-post-card
     data-post-title={post.data.title}
     data-post-description={post.data.description}
     data-post-tags={post.data.tags.join(" ")}
 >
-    <a href={`/blog/${post.id}`} class="block">
+    <a href={`/blog/${post.id}`} class="block relative z-10">
         <div class="flex items-center gap-3 text-sm text-muted-foreground">
             <time datetime={post.data.pubDate.toISOString()}>
                 {
@@ -23,23 +23,28 @@ const { post } = Astro.props;
         </div>
 
         <h3
-            class="mt-3 text-xl font-semibold tracking-tight group-hover:text-primary"
+            class="mt-3 text-xl font-semibold tracking-tight group-hover:text-primary transition-colors-smooth"
         >
             {post.data.title}
         </h3>
 
-        <p class="mt-2 text-muted-foreground">
+        <p class="mt-2 text-muted-foreground group-hover:text-foreground transition-colors-smooth">
             {post.data.description}
         </p>
 
         <div class="mt-4 flex flex-wrap gap-2">
             {
                 post.data.tags.map((tag: string) => (
-                    <span class="rounded-md bg-muted px-2 py-1 text-xs">
+                    <span class="rounded-md bg-muted px-2 py-1 text-xs group-hover:bg-primary/20 group-hover:text-primary transition-colors-smooth">
                         {tag}
                     </span>
                 ))
             }
         </div>
     </a>
+
+    <!-- Effet gradient au survol -->
+    <div class="absolute inset-0 -z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
+    </div>
 </article>

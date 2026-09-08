@@ -4,8 +4,9 @@ import { siteConfig } from "@/config/site";
 
 <a
     href="/"
-    class="font-semibold text-xl tracking-tight text-foreground transition-opacity hover:opacity-80"
+    class="group relative font-semibold text-xl tracking-tight text-foreground transition-smooth hover:text-primary"
     aria-label={`${siteConfig.name} - Accueil`}
 >
-    Téo Franoux.
+    <span class="relative z-10">Téo Franoux.</span>
+    <span class="absolute inset-0 -z-0 rounded-md bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity scale-110"></span>
 </a>

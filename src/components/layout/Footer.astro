@@ -2,15 +2,18 @@
 import { Github, Linkedin, Mail } from "lucide-astro";
 ---
 
-<footer class="border-t border-border">
-    <div class="mx-auto max-w-7xl px-4 py-10 md:py-12">
+<footer class="border-t border-border relative overflow-hidden">
+    <!-- Effet de gradient en arrière-plan -->
+    <div class="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 py-10 md:py-12 relative z-10">
         <div
             class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
         >
             <div>
                 <a
                     href="/"
-                    class="text-sm font-semibold tracking-tight"
+                    class="text-sm font-semibold tracking-tight hover:text-primary transition-colors-smooth"
                     aria-label="Retour à l'accueil"
                 >
                     Téo Franoux
@@ -28,7 +31,7 @@ import { Github, Linkedin, Mail } from "lucide-astro";
                             href="https://github.com/teofeo"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-muted-foreground transition-colors hover:text-foreground"
+                            class="inline-flex items-center justify-center size-10 rounded-full text-muted-foreground transition-smooth hover:text-primary hover:bg-primary/10 hover:scale-110"
                             aria-label="GitHub"
                         >
                             <Github class="size-5" />
@@ -40,7 +43,7 @@ import { Github, Linkedin, Mail } from "lucide-astro";
                             href="https://www.linkedin.com/in/t%C3%A9o-franoux/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-muted-foreground transition-colors hover:text-foreground"
+                            class="inline-flex items-center justify-center size-10 rounded-full text-muted-foreground transition-smooth hover:text-primary hover:bg-primary/10 hover:scale-110"
                             aria-label="LinkedIn"
                         >
                             <Linkedin class="size-5" />
@@ -50,7 +53,7 @@ import { Github, Linkedin, Mail } from "lucide-astro";
                     <li>
                         <a
                             href="mailto:teo.franoux@epitech.eu"
-                            class="text-muted-foreground transition-colors hover:text-foreground"
+                            class="inline-flex items-center justify-center size-10 rounded-full text-muted-foreground transition-smooth hover:text-primary hover:bg-primary/10 hover:scale-110"
                             aria-label="Envoyer un email"
                         >
                             <Mail class="size-5" />
