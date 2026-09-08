@@ -1,0 +1,88 @@
+---
+import { ChevronLeft, ChevronRight } from "lucide-astro";
+
+interface Props {
+    currentPage: number;
+    totalPages: number;
+    baseUrl?: string;
+}
+
+const { currentPage, totalPages, baseUrl = "/blog" } = Astro.props;
+
+const getPageUrl = (page: number) => {
+    if (page === 1) return baseUrl;
+    return `${baseUrl}/${page}`;
+};
+
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+// Afficher au maximum 5 pages autour de la page actuelle
+const visiblePages = pages.filter((page) => {
+    if (totalPages <= 7) return true;
+    if (page === 1 || page === totalPages) return true;
+    if (Math.abs(page - currentPage) <= 1) return true;
+    return false;
+});
+---
+
+{
+    totalPages > 1 && (
+        <nav class="mt-12 flex items-center justify-center gap-2">
+            {/* Bouton précédent */}
+            {currentPage > 1 ? (
+                <a
+                    href={getPageUrl(currentPage - 1)}
+                    class="flex h-10 w-10 items-center justify-center rounded-lg border border-border hover:bg-muted/50"
+                    aria-label="Page précédente"
+                >
+                    <ChevronLeft class="h-5 w-5" />
+                </a>
+            ) : (
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-border opacity-50">
+                    <ChevronLeft class="h-5 w-5" />
+                </div>
+            )}
+
+            {/* Numéros de page */}
+            {visiblePages.map((page, index) => {
+                const prevPage = visiblePages[index - 1];
+                const showEllipsis = prevPage && page - prevPage > 1;
+
+                return (
+                    <>
+                        {showEllipsis && (
+                            <span class="px-2 text-muted-foreground">...</span>
+                        )}
+                        {page === currentPage ? (
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-primary bg-primary text-primary-foreground font-medium">
+                                {page}
+                            </div>
+                        ) : (
+                            <a
+                                href={getPageUrl(page)}
+                                class="flex h-10 w-10 items-center justify-center rounded-lg border border-border hover:bg-muted/50"
+                            >
+                                {page}
+                            </a>
+                        )}
+                    </>
+                );
+            })}
+
+            {/* Bouton suivant */}
+            {currentPage < totalPages ? (
+                <a
+                    href={getPageUrl(currentPage + 1)}
+                    class="flex h-10 w-10 items-center justify-center rounded-lg border border-border hover:bg-muted/50"
+                    aria-label="Page suivante"
+                >
+                    <ChevronRight class="h-5 w-5" />
+                </a>
+            ) : (
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg border border-border opacity-50">
+                    <ChevronRight class="h-5 w-5" />
+                </div>
+            )}
+        </nav>
+    )
+}

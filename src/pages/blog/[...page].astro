@@ -1,0 +1,98 @@
+---
+import type { Page, GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import PostGrid from "@/components/blog/PostGrid.astro";
+import SearchBar from "@/components/blog/SearchBar.astro";
+import Pagination from "@/components/blog/Pagination.astro";
+import PageHero from "@/components/page/PageHero.astro";
+import InfoGrid from "@/components/page/InfoGrid.astro";
+
+import { Newspaper, CalendarDays, Tags } from "lucide-astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    const posts = await getCollection("blog");
+
+    const sortedPosts = posts.sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    );
+
+    return paginate(sortedPosts, { pageSize: 9 });
+}) satisfies GetStaticPaths;
+
+interface Props {
+    page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+
+const posts = await getCollection("blog");
+
+const sortedPosts = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const latestPost = sortedPosts[0];
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+const features = [
+    {
+        icon: Newspaper,
+        label: "Articles",
+        title: "Retours, guides et expérimentations",
+    },
+    {
+        icon: CalendarDays,
+        label: "Dernière publication",
+        title: latestPost
+            ? latestPost.data.pubDate.toLocaleDateString("fr-FR", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+              })
+            : "—",
+    },
+    {
+        icon: Tags,
+        label: "Sujets abordés",
+        title:
+            tags.length > 0
+                ? tags.slice(0, 4).join(" · ")
+                : "DevOps · Infrastructure · Cloud",
+    },
+];
+---
+
+<Layout
+    title="Blog - Téo Franoux"
+    description="Articles sur le DevOps, l'infrastructure, le cloud et mon homelab."
+>
+    <main>
+        <PageHero
+            eyebrow="Mes articles"
+            title="Blog"
+            description="Mes articles sur l'infrastructure, le DevOps, le cloud et mes différents projets."
+        />
+
+        <InfoGrid features={features} />
+
+        <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
+            <div class="mt-8 max-w-xl">
+                <SearchBar />
+            </div>
+
+            <div class="mt-12">
+                <PostGrid posts={page.data} />
+            </div>
+
+            <Pagination
+                currentPage={page.currentPage}
+                totalPages={page.lastPage}
+                baseUrl="/blog"
+            />
+        </section>
+    </main>
+</Layout>

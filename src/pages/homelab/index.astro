@@ -1,93 +1,54 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import {
-    ArrowLeft,
-    Boxes,
-    Cpu,
-    Database,
-    ExternalLink,
-    GitBranch,
-    HardDrive,
-    Network,
     Server,
-    ShieldCheck,
+    Boxes,
     Workflow,
+    Network,
+    HardDrive,
+    Cpu,
+    GitBranch,
+    ShieldCheck,
+    ExternalLink,
 } from "lucide-astro";
+
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/page/PageHero.astro";
+import InfoGrid from "@/components/page/InfoGrid.astro";
+
+const features = [
+    {
+        icon: Server,
+        label: "Hardware",
+        title: "Minisforum MS-A2",
+    },
+    {
+        icon: Boxes,
+        label: "Hyperviseur",
+        title: "Proxmox VE",
+    },
+    {
+        icon: Workflow,
+        label: "Approche",
+        title: "Infrastructure as Code",
+    },
+];
 ---
 
 <Layout
-    title="Homelab — Téo Franoux"
+    title="Homelab - Téo Franoux"
     description="Le homelab de Téo Franoux : Proxmox, réseau, Linux, Terraform, Ansible, Docker et Kubernetes."
 >
     <main>
-        <!-- Hero -->
-        <section
-            class="mx-auto max-w-screen-xl px-4 pb-16 pt-16 md:pb-24 md:pt-24"
-        >
-            <a
-                href="/"
-                class="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-                <ArrowLeft class="size-4" />
-                Retour à l'accueil
-            </a>
+        <PageHero
+            eyebrow="homelab/"
+            title="Mon terrain d'expérimentation."
+            description="Un environnement personnel dans lequel je peux expérimenter librement avec le réseau, les systèmes, la virtualisation, l'automatisation et le DevOps."
+        />
 
-            <div class="mt-10 max-w-4xl">
-                <p class="font-mono text-sm text-primary">homelab/</p>
-
-                <h1
-                    class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
-                >
-                    Mon terrain d'expérimentation.
-                </h1>
-
-                <p
-                    class="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground"
-                >
-                    Un environnement personnel dans lequel je peux expérimenter
-                    librement avec le réseau, les systèmes, la virtualisation,
-                    l'automatisation et le DevOps.
-                </p>
-            </div>
-        </section>
-
-        <!-- Overview -->
-        <section class="border-y border-border">
-            <div class="mx-auto grid max-w-screen-xl md:grid-cols-3">
-                <div
-                    class="border-b border-border p-6 md:border-b-0 md:border-r md:p-8"
-                >
-                    <Server class="size-5" />
-
-                    <p class="mt-4 text-sm text-muted-foreground">Hardware</p>
-
-                    <h2 class="mt-1 font-semibold">Minisforum MS-A2</h2>
-                </div>
-
-                <div
-                    class="border-b border-border p-6 md:border-b-0 md:border-r md:p-8"
-                >
-                    <Boxes class="size-5" />
-
-                    <p class="mt-4 text-sm text-muted-foreground">
-                        Hyperviseur
-                    </p>
-
-                    <h2 class="mt-1 font-semibold">Proxmox VE</h2>
-                </div>
-
-                <div class="p-6 md:p-8">
-                    <Workflow class="size-5" />
-
-                    <p class="mt-4 text-sm text-muted-foreground">Approche</p>
-
-                    <h2 class="mt-1 font-semibold">Infrastructure as Code</h2>
-                </div>
-            </div>
-        </section>
+        <InfoGrid features={features} />
 
         <!-- Architecture -->
-        <section class="mx-auto max-w-screen-xl px-4 py-20 md:py-28">
+        <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
             <div class="mb-12 max-w-2xl">
                 <p class="text-sm font-medium text-primary">Architecture</p>
 
@@ -300,7 +261,7 @@ import {
         <!-- IaC -->
         <section class="border-y border-border bg-muted/20">
             <div
-                class="mx-auto grid max-w-screen-xl gap-12 px-4 py-20 md:grid-cols-2 md:items-center md:py-28"
+                class="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:grid-cols-2 md:items-center md:py-28"
             >
                 <div>
                     <p class="text-sm font-medium text-primary">
@@ -360,7 +321,7 @@ import {
         </section>
 
         <!-- Security -->
-        <section class="mx-auto max-w-screen-xl px-4 py-20 md:py-28">
+        <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
             <div class="grid gap-12 md:grid-cols-2">
                 <div>
                     <p class="text-sm font-medium text-primary">Philosophie</p>
@@ -401,7 +362,7 @@ import {
 
         <!-- CTA -->
         <section class="border-t border-border">
-            <div class="mx-auto max-w-screen-xl px-4 py-16 md:py-20">
+            <div class="mx-auto max-w-7xl px-4 py-16 md:py-20">
                 <div
                     class="flex flex-col justify-between gap-6 sm:flex-row sm:items-center"
                 >

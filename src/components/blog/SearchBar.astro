@@ -1,0 +1,50 @@
+---
+import { Search } from "lucide-astro";
+---
+
+<div class="relative">
+    <Search
+        class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground"
+    />
+
+    <input
+        type="text"
+        id="search-input"
+        placeholder="Rechercher un article..."
+        class="w-full rounded-lg border border-border bg-background py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary"
+    />
+</div>
+
+<script>
+    const searchInput = document.getElementById(
+        "search-input",
+    ) as HTMLInputElement;
+    const postCards = document.querySelectorAll("[data-post-card]");
+
+    if (searchInput && postCards.length > 0) {
+        searchInput.addEventListener("input", (e) => {
+            const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+
+            postCards.forEach((card) => {
+                const title =
+                    card.getAttribute("data-post-title")?.toLowerCase() || "";
+                const description =
+                    card.getAttribute("data-post-description")?.toLowerCase() ||
+                    "";
+                const tags =
+                    card.getAttribute("data-post-tags")?.toLowerCase() || "";
+
+                const matches =
+                    title.includes(searchTerm) ||
+                    description.includes(searchTerm) ||
+                    tags.includes(searchTerm);
+
+                if (matches) {
+                    (card as HTMLElement).style.display = "";
+                } else {
+                    (card as HTMLElement).style.display = "none";
+                }
+            });
+        });
+    }
+</script>

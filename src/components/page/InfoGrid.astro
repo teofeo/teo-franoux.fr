@@ -1,0 +1,42 @@
+---
+
+interface Feature {
+    icon: typeof import("lucide-astro").Server;
+    label: string;
+    title: string;
+}
+
+interface Props {
+    features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<section class="border-y border-border">
+    <div class="mx-auto grid max-w-7xl md:grid-cols-3">
+        {
+            features.map((feature, index) => {
+                const Icon = feature.icon;
+
+                return (
+                    <div
+                        class:list={[
+                            "p-6 md:p-8",
+                            index < features.length - 1 &&
+                                "border-b border-border md:border-b-0 md:border-r",
+                        ]}
+                    >
+                        <Icon class="size-5" />
+
+                        <p class="mt-4 text-sm text-muted-foreground">
+                            {feature.label}
+                        </p>
+
+                        <h2 class="mt-1 font-semibold">{feature.title}</h2>
+                    </div>
+                );
+            })
+        }
+    </div>
+</section>

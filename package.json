@@ -1,7 +1,9 @@
 {
   "name": "astro-personnal-website",
+  "version": "1.0.0",
+  "description": "Personal portfolio and blog built with Astro, featuring a timeline, projects showcase, and contact section.",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "engines": {
     "node": ">=22.12.0"
   },

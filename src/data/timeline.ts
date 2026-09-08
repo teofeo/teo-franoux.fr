@@ -14,16 +14,16 @@ export const timeline: TimelineItem[] = [
     organization: "Certification AWS",
     location: "France",
     description:
-      "Préparation et passage de la certification AWS Cloud Practitioner en autonomie, principalement comme challenge personnel.",
+      "Obtention de la certification AWS Cloud Practitioner en autonomie pour consolider mes fondamentaux en cloud et en infrastructure.",
     highlight: "Certification obtenue",
   },
   {
-    period: "2025 - 2026",
+    period: "Aujourd'hui",
     title: "Homelab",
     organization: "Projet personnel",
     location: "Québec, Canada",
     description:
-      "Pendant mon année à l'Université Laval, j'ai acheté un MS-A2 qui me permet de pouvoir augmenter mes connaissances en virtualisation et en DevOps.",
+      "Mise en place d'un homelab autour d'un Minisforum MS-A2 pour expérimenter la virtualisation, Linux, le réseau et les pratiques DevOps dans un environnement que je contrôle.",
     highlight: "Proxmox · Linux · Networking · DevOps",
   },
   {
@@ -32,33 +32,34 @@ export const timeline: TimelineItem[] = [
     organization: "Certificat sur mesure en technologies de l'information",
     location: "Québec, Canada",
     description:
-      "Départ à l'étranger pendant ma quatrième année d'Epitech pour étudier à l'Université Laval et élargir mon expérience technique et personnelle.",
+      "Échange académique au Canada pendant ma quatrième année d'Epitech. Une expérience qui m'a permis d'élargir mes connaissances techniques et de découvrir un nouvel environnement académique.",
     highlight: "Expérience internationale",
   },
   {
     period: "2025",
-    title: "Stage - Société Générale Luxembourg",
-    organization: "Société Générale",
-    location: "Luxembourg",
+    title: "Stage DevOps & Automatisation",
+    organization: "Société Générale Private Banking",
+    location: "Esch-sur-Alzette, Luxembourg",
     description:
-      "Deuxième expérience chez Société Générale Luxembourg, qui confirme mon intérêt pour le DevOps, l'automatisation et l'infrastructure.",
-    highlight: "Début réel de mon parcours DevOps",
-  },
-  {
-    period: "2024",
-    title: "Stage - Société Générale Luxembourg",
-    organization: "Société Générale",
-    location: "Luxembourg",
-    description:
-      "Première expérience professionnelle où je découvre concrètement les environnements d'entreprise et les problématiques d'infrastructure.",
-    highlight: "Première découverte du DevOps",
+      "Contribution à l'automatisation et à la sécurisation des processus d'infrastructure. Administration et sécurisation de Rundeck, gestion des ACL et intégration de HashiCorp Vault pour centraliser les secrets.",
+    highlight: "Rundeck · Vault · ACL · Automatisation",
   },
   {
     period: "2023",
-    title: "Epitech",
-    organization: "Études en informatique",
-    location: "Nancy, France",
+    title: "Stage Développement & Automatisation DevOps",
+    organization: "Société Générale Private Banking",
+    location: "Esch-sur-Alzette, Luxembourg",
     description:
-      "Début de mon parcours en informatique avec un intérêt grandissant pour l'automatisation et la compréhension des systèmes.",
+      "Participation à la modernisation d'une plateforme interne de gestion des équipements de datacenter. Développement d'une nouvelle solution avec Python, HTML et CSS pour améliorer la visualisation et la gestion des actifs.",
+    highlight: "Python · Datacenter · Full-stack",
+  },
+  {
+    period: "2022 - 2027",
+    title: "Programme Grand école",
+    organization: "Epitech",
+    location: "France",
+    description:
+      "Début de mon parcours en informatique et découverte progressive du développement, des systèmes et des problématiques liées à l'infrastructure.",
+    highlight: "Début du parcours informatique",
   },
 ];

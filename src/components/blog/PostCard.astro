@@ -4,6 +4,10 @@ const { post } = Astro.props;
 
 <article
     class="group rounded-xl border border-border p-6 transition-colors hover:bg-muted/50"
+    data-post-card
+    data-post-title={post.data.title}
+    data-post-description={post.data.description}
+    data-post-tags={post.data.tags.join(" ")}
 >
     <a href={`/blog/${post.id}`} class="block">
         <div class="flex items-center gap-3 text-sm text-muted-foreground">
@@ -30,7 +34,7 @@ const { post } = Astro.props;
 
         <div class="mt-4 flex flex-wrap gap-2">
             {
-                post.data.tags.map((tag) => (
+                post.data.tags.map((tag: string) => (
                     <span class="rounded-md bg-muted px-2 py-1 text-xs">
                         {tag}
                     </span>

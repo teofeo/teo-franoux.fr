@@ -1,23 +1,43 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ProjectGrid from "@/components/projects/ProjectGrid.astro";
+import PageHero from "@/components/page/PageHero.astro";
+import InfoGrid from "@/components/page/InfoGrid.astro";
+
+import { FolderGit2, Code2, Layers3 } from "lucide-astro";
+
+const features = [
+    {
+        icon: FolderGit2,
+        label: "Projets",
+        title: "Projets personnels & académiques",
+    },
+    {
+        icon: Code2,
+        label: "Technologies",
+        title: "TypeScript · Docker · Terraform · Ansible",
+    },
+    {
+        icon: Layers3,
+        label: "Domaines",
+        title: "DevOps · Infrastructure · Réseaux",
+    },
+];
 ---
 
-<Layout title="Projets — Téo Franoux" description="Les projets de Téo Franoux.">
-    <section class="mx-auto max-w-screen-2xl px-4 py-20">
-        <header class="max-w-2xl">
-            <p class="text-sm font-medium text-muted-foreground">Portfolio</p>
+<Layout
+    title="Projets - Téo Franoux"
+    description="Découvrez les projets personnels et académiques de Téo Franoux autour du développement, du DevOps et de l'infrastructure."
+>
+    <PageHero
+        eyebrow="Mon portfolio"
+        title="Projets"
+        description="Une sélection de projets personnels et académiques autour du développement, du DevOps, du cloud et de l'infrastructure."
+    />
 
-            <h1 class="mt-2 text-4xl font-bold tracking-tight">Projets</h1>
+    <InfoGrid features={features} />
 
-            <p class="mt-4 text-muted-foreground">
-                Une sélection de projets personnels et académiques autour du
-                développement, du DevOps et de l'infrastructure.
-            </p>
-        </header>
-
-        <div class="mt-12">
-            <ProjectGrid />
-        </div>
+    <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
+        <ProjectGrid />
     </section>
 </Layout>

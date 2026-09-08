@@ -1,27 +1,82 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/page/PageHero.astro";
+import { contactInfo } from "@/data/contact";
+import { Github, Linkedin, Mail } from "lucide-astro";
+
+const iconMap: Record<string, any> = {
+    github: Github,
+    linkedin: Linkedin,
+};
+
+const details = [
+    {
+        label: "Disponibilité",
+        value: "CDI à partir de septembre 2027, freelance dès maintenant",
+    },
+    { label: "Localisation", value: "Nancy, France" },
+];
 ---
 
-<Layout title="Contact — Téo Franoux" description="Contacter Téo Franoux.">
-    <section class="mx-auto max-w-screen-2xl px-4 py-20">
-        <div class="max-w-2xl">
-            <p class="text-sm font-medium text-muted-foreground">Contact</p>
+<Layout title="Contact - Téo Franoux" description="Contacter Téo Franoux.">
+    <PageHero
+        eyebrow="Me contacter"
+        title="Contact"
+        description="Une question, un projet ou simplement envie d'échanger ? N'hésite pas à me contacter."
+    />
 
-            <h1 class="mt-2 text-4xl font-bold tracking-tight">Me contacter</h1>
-
-            <p class="mt-6 text-lg text-muted-foreground">
-                Une question, un projet ou simplement envie d'échanger ?
-                N'hésite pas à me contacter.
-            </p>
-
-            <div class="mt-10">
-                <a
-                    href="mailto:ton@email.com"
-                    class="font-medium underline underline-offset-4"
+    <section class="mx-auto max-w-screen-2xl px-4 pb-20 md:pb-28">
+        <div class="mx-auto max-w-xl">
+            <!-- Email -->
+            <a
+                href={`mailto:${contactInfo.email}`}
+                class="group flex items-center justify-between border-b border-border py-6 transition-colors hover:border-foreground/40"
+            >
+                <span class="flex items-center gap-3">
+                    <Mail class="h-4 w-4 text-muted-foreground" />
+                    <span class="font-medium">Email</span>
+                </span>
+                <span
+                    class="text-muted-foreground transition-colors group-hover:text-foreground"
                 >
-                    ton@email.com
-                </a>
-            </div>
+                    {contactInfo.email}
+                </span>
+            </a>
+
+            <!-- Réseaux sociaux -->
+            {
+                contactInfo.links.map((link) => {
+                    const IconComponent = iconMap[link.icon];
+                    return (
+                        <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex items-center justify-between border-b border-border py-6 transition-colors hover:border-foreground/40"
+                        >
+                            <span class="flex items-center gap-3">
+                                <IconComponent class="h-4 w-4 text-muted-foreground" />
+                                <span class="font-medium">{link.name}</span>
+                            </span>
+                            <span class="text-muted-foreground transition-colors group-hover:text-foreground">
+                                {link.url.replace("https://", "")}
+                            </span>
+                        </a>
+                    );
+                })
+            }
+
+            <!-- Infos complémentaires -->
+            {
+                details.map((detail) => (
+                    <div class="flex items-center justify-between border-b border-border py-6 last:border-b-0">
+                        <span class="font-medium">{detail.label}</span>
+                        <span class="text-right text-muted-foreground">
+                            {detail.value}
+                        </span>
+                    </div>
+                ))
+            }
         </div>
     </section>
 </Layout>

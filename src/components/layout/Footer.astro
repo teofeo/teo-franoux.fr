@@ -1,0 +1,69 @@
+---
+import { Github, Linkedin, Mail } from "lucide-astro";
+---
+
+<footer class="border-t border-border">
+    <div class="mx-auto max-w-7xl px-4 py-10 md:py-12">
+        <div
+            class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+        >
+            <div>
+                <a
+                    href="/"
+                    class="text-sm font-semibold tracking-tight"
+                    aria-label="Retour à l'accueil"
+                >
+                    Téo Franoux
+                </a>
+
+                <p class="mt-2 text-sm text-muted-foreground">
+                    Étudiant en informatique · DevOps & Infrastructure
+                </p>
+            </div>
+
+            <nav aria-label="Liens externes">
+                <ul class="flex items-center gap-5">
+                    <li>
+                        <a
+                            href="https://github.com/teofeo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-muted-foreground transition-colors hover:text-foreground"
+                            aria-label="GitHub"
+                        >
+                            <Github class="size-5" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://www.linkedin.com/in/t%C3%A9o-franoux/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-muted-foreground transition-colors hover:text-foreground"
+                            aria-label="LinkedIn"
+                        >
+                            <Linkedin class="size-5" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="mailto:teo.franoux@epitech.eu"
+                            class="text-muted-foreground transition-colors hover:text-foreground"
+                            aria-label="Envoyer un email"
+                        >
+                            <Mail class="size-5" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div
+            class="mt-8 border-t border-border pt-6 text-xs text-muted-foreground"
+        >
+            <p>© {new Date().getFullYear()} Téo Franoux</p>
+        </div>
+    </div>
+</footer>
