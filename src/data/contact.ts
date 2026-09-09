@@ -9,12 +9,12 @@ export const contactInfo = {
   links: [
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/teo-franoux",
+      url: "https://linkedin.com/in/téo-franoux",
       icon: "linkedin",
     },
     {
       name: "GitHub",
-      url: "https://github.com/teofranoux",
+      url: "https://github.com/teofeo",
       icon: "github",
     },
   ] as ContactLink[],

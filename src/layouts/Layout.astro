@@ -19,6 +19,33 @@ const { title = siteConfig.title, description = siteConfig.description } =
 
 <!doctype html>
 <html lang="fr">
+    <script is:inline>
+        // Fonction pour appliquer le thème
+        function applyTheme() {
+            // Détecter la préférence système si aucune préférence n'est enregistrée
+            let theme = localStorage.getItem("theme");
+
+            if (!theme) {
+                // Utiliser la préférence système
+                theme = window.matchMedia("(prefers-color-scheme: dark)")
+                    .matches
+                    ? "dark"
+                    : "light";
+            }
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        }
+
+        // Appliquer immédiatement au premier chargement
+        applyTheme();
+
+        // Ré-appliquer après chaque navigation client-side
+        document.addEventListener("astro:page-load", applyTheme);
+        document.addEventListener("astro:after-swap", applyTheme);
+    </script>
     <head>
         <meta charset="UTF-8" />
 
@@ -65,15 +92,15 @@ const { title = siteConfig.title, description = siteConfig.description } =
         <script>
             // Amélioration du header au scroll
             let lastScroll = 0;
-            const header = document.getElementById('main-header');
+            const header = document.getElementById("main-header");
 
-            window.addEventListener('scroll', () => {
+            window.addEventListener("scroll", () => {
                 const currentScroll = window.scrollY;
 
                 if (currentScroll > 100) {
-                    header?.classList.add('shadow-soft');
+                    header?.classList.add("shadow-soft");
                 } else {
-                    header?.classList.remove('shadow-soft');
+                    header?.classList.remove("shadow-soft");
                 }
 
                 lastScroll = currentScroll;
@@ -82,22 +109,32 @@ const { title = siteConfig.title, description = siteConfig.description } =
             // Observation pour les animations au scroll
             const observerOptions = {
                 threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                rootMargin: "0px 0px -50px 0px",
             };
 
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-up');
+                        entry.target.classList.add("animate-fade-up");
                     }
                 });
             }, observerOptions);
 
             // Observer les sections
-            document.querySelectorAll('section').forEach(section => {
-                if (!section.classList.contains('animate-fade-up')) {
+            document.querySelectorAll("section").forEach((section) => {
+                if (!section.classList.contains("animate-fade-up")) {
                     observer.observe(section);
                 }
+            });
+
+            // Ré-initialiser les observers après navigation client-side
+            document.addEventListener("astro:page-load", () => {
+                // Ré-observer les sections
+                document.querySelectorAll("section").forEach((section) => {
+                    if (!section.classList.contains("animate-fade-up")) {
+                        observer.observe(section);
+                    }
+                });
             });
         </script>
     </body>

@@ -30,16 +30,62 @@
 </button>
 
 <script>
-    const button = document.querySelector("#theme-toggle");
+    function initThemeToggle() {
+        const button = document.querySelector("#theme-toggle");
+        const icon = document.querySelector("#theme-icon");
 
-    button?.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
+        if (!button || !icon) return;
 
-        localStorage.setItem(
-            "theme",
-            document.documentElement.classList.contains("dark")
+        // Mettre à jour l'icône selon le thème actuel
+        function updateIcon() {
+            if (!icon) return;
+
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+                // Icône lune (mode sombre actif)
+                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+            } else {
+                // Icône soleil (mode clair actif)
+                icon.innerHTML = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>';
+            }
+        }
+
+        // Initialiser l'icône au chargement
+        updateIcon();
+
+        // Retirer l'ancien event listener s'il existe (pour éviter les doublons)
+        const newButton = button.cloneNode(true);
+        button.parentNode?.replaceChild(newButton, button);
+
+        newButton.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+
+            const newTheme = document.documentElement.classList.contains("dark")
                 ? "dark"
-                : "light",
-        );
-    });
+                : "light";
+
+            localStorage.setItem("theme", newTheme);
+
+            // Mettre à jour l'icône immédiatement
+            const updatedIcon = document.querySelector("#theme-icon");
+            if (updatedIcon) {
+                const isDark = document.documentElement.classList.contains('dark');
+                if (isDark) {
+                    updatedIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+                } else {
+                    updatedIcon.innerHTML = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>';
+                }
+            }
+        });
+    }
+
+    // Initialiser au chargement initial
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemeToggle);
+    } else {
+        initThemeToggle();
+    }
+
+    // Ré-initialiser après chaque navigation client-side
+    document.addEventListener('astro:page-load', initThemeToggle);
 </script>
