@@ -1,0 +1,65 @@
+---
+interface Heading {
+    depth: number;
+    slug: string;
+    text: string;
+}
+
+const { headings } = Astro.props as { headings: Heading[] };
+
+const filtered = headings.filter((h) => h.depth <= 3);
+---
+
+<nav aria-label="Sommaire" class="text-sm">
+    <p class="mb-3 font-semibold text-foreground">Sommaire</p>
+    <ul class="space-y-2 border-l border-border">
+        {filtered.map((h) => (
+            <li class={h.depth === 3 ? "pl-6" : "pl-3"}>
+                <a
+                    href={`#${h.slug}`}
+                    data-slug={h.slug}
+                    class="toc-link -ml-px block border-l-2 border-transparent pl-3 text-muted-foreground transition-colors hover:text-foreground data-[active=true]:border-primary data-[active=true]:font-semibold data-[active=true]:text-foreground"
+                >
+                    {h.text}
+                </a>
+            </li>
+        ))}
+    </ul>
+</nav>
+
+<script>
+    function initToc() {
+        const links = document.querySelectorAll<HTMLAnchorElement>(".toc-link");
+        if (!links.length) return;
+
+        const headingEls = Array.from(links)
+            .map((link) => document.getElementById(link.dataset.slug!))
+            .filter((el): el is HTMLElement => el !== null);
+
+        if (!headingEls.length) return;
+
+        const setActive = (slug: string | null) => {
+            links.forEach((l) => {
+                l.dataset.active = l.dataset.slug === slug ? "true" : "false";
+            });
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            },
+            {
+                rootMargin: "0px 0px -70% 0px",
+                threshold: 0,
+            },
+        );
+
+        headingEls.forEach((el) => observer.observe(el));
+    }
+
+    document.addEventListener("astro:page-load", initToc);
+</script>

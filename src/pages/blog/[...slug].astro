@@ -1,9 +1,19 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar.astro";
+import TableOfContents from "@/components/blog/TableOfContents.astro";
+import AuthorSocials from "@/components/blog/AuthorSocials.astro";
+import RelatedPosts from "@/components/blog/RelatedPosts.astro";
+import TagList from "@/components/blog/TagList.astro";
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
     return posts.map((post) => ({
         params: {
@@ -16,36 +26,68 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
+
+const minutesRead = remarkPluginFrontmatter.minutesRead;
 ---
 
 <Layout
     title={`${post.data.title} - Téo Franoux`}
     description={post.data.description}
 >
-    <article class="mx-auto max-w-3xl px-4 py-16">
-        <header class="mb-12">
-            <p class="text-sm text-muted-foreground">
-                {
-                    post.data.pubDate.toLocaleDateString("fr-FR", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                    })
-                }
-            </p>
+    <ReadingProgressBar />
 
-            <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
-                {post.data.title}
-            </h1>
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-16 lg:grid-cols-[1fr_240px]">
+        <article class="mx-auto w-full max-w-3xl">
+            <header class="mb-12">
+                <div class="flex items-center gap-3 text-sm text-muted-foreground">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                        {post.data.pubDate.toLocaleDateString("fr-FR", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}
+                    </time>
 
-            <p class="mt-6 text-lg text-muted-foreground">
-                {post.data.description}
-            </p>
-        </header>
+                    <span aria-hidden="true">·</span>
 
-        <div class="prose prose-neutral dark:prose-invert max-w-none">
-            <Content />
-        </div>
-    </article>
+                    <span>{minutesRead} min de lecture</span>
+                </div>
+
+                <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+                    {post.data.title}
+                </h1>
+
+                <p class="mt-6 text-lg text-muted-foreground">
+                    {post.data.description}
+                </p>
+
+                <div class="mt-6">
+                    <TagList tags={post.data.tags} />
+                </div>
+            </header>
+
+            <div
+                id="article-content"
+                class="prose prose-neutral dark:prose-invert max-w-none"
+            >
+                <Content />
+            </div>
+
+            <RelatedPosts
+                currentSlug={post.id}
+                currentTags={post.data.tags}
+                limit={3}
+            />
+
+            <AuthorSocials showAuthorInfo={true} />
+        </article>
+
+        <aside class="hidden lg:block">
+            <div class="sticky top-24">
+                <TableOfContents headings={headings} />
+            </div>
+        </aside>
+    </div>
 </Layout>

@@ -1,5 +1,16 @@
 ---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
 const { post } = Astro.props;
+
+const { remarkPluginFrontmatter } = await render(post);
+
+const minutesRead = remarkPluginFrontmatter.minutesRead;
 ---
 
 <article
@@ -12,19 +23,18 @@ const { post } = Astro.props;
     <a href={`/blog/${post.id}`} class="block relative z-10">
         <div class="flex items-center gap-3 text-sm text-muted-foreground">
             <time datetime={post.data.pubDate.toISOString()}>
-                {
-                    post.data.pubDate.toLocaleDateString("fr-FR", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                    })
-                }
+                {post.data.pubDate.toLocaleDateString("fr-FR", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                })}
             </time>
+            <span>·</span>
+
+            <span>{minutesRead} min de lecture</span>
         </div>
 
-        <h3
-            class="mt-3 text-xl font-semibold tracking-tight group-hover:text-primary transition-colors-smooth"
-        >
+        <h3 class="mt-3 text-xl font-semibold tracking-tight group-hover:text-primary transition-colors-smooth">
             {post.data.title}
         </h3>
 
@@ -33,18 +43,16 @@ const { post } = Astro.props;
         </p>
 
         <div class="mt-4 flex flex-wrap gap-2">
-            {
-                post.data.tags.map((tag: string) => (
-                    <span class="rounded-md bg-muted px-2 py-1 text-xs group-hover:bg-primary/20 group-hover:text-primary transition-colors-smooth">
-                        {tag}
-                    </span>
-                ))
-            }
+            {post.data.tags.map((tag: string) => (
+                <span class="rounded-md bg-muted px-2 py-1 text-xs group-hover:bg-primary/20 group-hover:text-primary transition-colors-smooth">
+                    {tag}
+                </span>
+            ))}
         </div>
     </a>
 
     <!-- Effet gradient au survol -->
-    <div class="absolute inset-0 -z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent"></div>
     </div>
 </article>

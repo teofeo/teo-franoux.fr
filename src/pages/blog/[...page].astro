@@ -13,7 +13,7 @@ import InfoGrid from "@/components/page/InfoGrid.astro";
 import { Newspaper, CalendarDays, Tags } from "lucide-astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-    const posts = await getCollection("blog");
+    const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
     const sortedPosts = posts.sort(
         (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -28,7 +28,7 @@ interface Props {
 
 const { page } = Astro.props;
 
-const posts = await getCollection("blog");
+const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
 const sortedPosts = posts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -58,10 +58,7 @@ const features = [
     {
         icon: Tags,
         label: "Sujets abordés",
-        title:
-            tags.length > 0
-                ? tags.slice(0, 4).join(" · ")
-                : "DevOps · Infrastructure · Cloud",
+        title: tags.slice(0, 4).join(" · "),
     },
 ];
 ---

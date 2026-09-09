@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    currentSlug: string;
+    currentTags: string[];
+    limit?: number;
+}
+
+const { currentSlug, currentTags, limit = 3 } = Astro.props;
+
+const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
+
+const relatedPosts = allPosts
+    .filter((post) => post.id !== currentSlug)
+    .map((post) => {
+        const commonTags = post.data.tags.filter((tag: string) =>
+            currentTags.includes(tag),
+        );
+        return {
+            post,
+            score: commonTags.length,
+        };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit);
+---
+
+{relatedPosts.length > 0 && (
+    <div class="mt-16 border-t border-border pt-8">
+        <h3 class="text-2xl font-bold mb-6">Articles similaires</h3>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {relatedPosts.map(({ post }) => (
+                <a
+                    href={`/blog/${post.id}`}
+                    class="group block rounded-lg border border-border p-4 transition-all hover:border-primary hover:shadow-lg"
+                >
+                    <div class="flex flex-col gap-2">
+                        <time class="text-sm text-muted-foreground">
+                            {post.data.pubDate.toLocaleDateString("fr-FR", {
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric",
+                            })}
+                        </time>
+
+                        <h4 class="font-semibold group-hover:text-primary transition-colors">
+                            {post.data.title}
+                        </h4>
+
+                        <p class="text-sm text-muted-foreground line-clamp-2">
+                            {post.data.description}
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            {post.data.tags.slice(0, 3).map((tag: string) => (
+                                <span class="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+)}
