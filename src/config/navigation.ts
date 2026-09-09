@@ -1,6 +1,5 @@
 import {
   House,
-  FolderGit2,
   BookOpen,
   Server,
   Mail,
@@ -11,11 +10,6 @@ export const navigation = [
     label: "Accueil",
     href: "/",
     icon: House,
-  },
-  {
-    label: "Projets",
-    href: "/projects",
-    icon: FolderGit2,
   },
   {
     label: "Blog",
