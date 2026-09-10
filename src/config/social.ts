@@ -5,35 +5,20 @@
 
 export const socialLinks = {
   linkedin: {
-    url: "https://www.linkedin.com/in/votre-profil",
+    url: "https://www.linkedin.com/in/téo-franoux",
     label: "LinkedIn",
     show: true,
   },
   github: {
-    url: "https://github.com/votre-username",
+    url: "https://github.com/teofeo",
     label: "GitHub",
     show: true,
   },
-  twitter: {
-    url: "https://twitter.com/votre-username",
-    label: "Twitter",
-    show: true,
-  },
   email: {
-    url: "mailto:votre-email@example.com",
+    url: "mailto:teo.franoux@epitech.eu",
     label: "Email",
     show: true,
-  },
-  mastodon: {
-    url: "https://mastodon.social/@votre-username",
-    label: "Mastodon",
-    show: false,
-  },
-  gitlab: {
-    url: "https://gitlab.com/votre-username",
-    label: "GitLab",
-    show: false,
-  },
+  }
 };
 
 export const authorInfo = {

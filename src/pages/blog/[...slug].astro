@@ -4,7 +4,6 @@ import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import ReadingProgressBar from "@/components/blog/ReadingProgressBar.astro";
 import TableOfContents from "@/components/blog/TableOfContents.astro";
-import AuthorSocials from "@/components/blog/AuthorSocials.astro";
 import RelatedPosts from "@/components/blog/RelatedPosts.astro";
 import TagList from "@/components/blog/TagList.astro";
 
@@ -80,8 +79,6 @@ const minutesRead = remarkPluginFrontmatter.minutesRead;
                 currentTags={post.data.tags}
                 limit={3}
             />
-
-            <AuthorSocials showAuthorInfo={true} />
         </article>
 
         <aside class="hidden lg:block">

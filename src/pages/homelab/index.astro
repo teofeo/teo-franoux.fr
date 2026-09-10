@@ -1,313 +1,298 @@
 ---
 import {
     Server,
-    Boxes,
+    Terminal,
     Workflow,
     Network,
-    HardDrive,
-    Cpu,
-    GitBranch,
-    ShieldCheck,
-    ExternalLink,
+    Boxes,
+    ArrowRight,
 } from "lucide-astro";
 
 import Layout from "@/layouts/Layout.astro";
 import PageHero from "@/components/page/PageHero.astro";
-import InfoGrid from "@/components/page/InfoGrid.astro";
-
-const features = [
-    {
-        icon: Server,
-        label: "Hardware",
-        title: "Minisforum MS-A2",
-    },
-    {
-        icon: Boxes,
-        label: "Hyperviseur",
-        title: "Proxmox VE",
-    },
-    {
-        icon: Workflow,
-        label: "Approche",
-        title: "Infrastructure as Code",
-    },
-];
 ---
 
 <Layout
     title="Homelab - Téo Franoux"
-    description="Le homelab de Téo Franoux : Proxmox, réseau, Linux, Terraform, Ansible, Docker et Kubernetes."
+    description="Mon homelab personnel : un environnement pour expérimenter avec l'infrastructure, Linux, le réseau et l'automatisation."
 >
     <main>
         <PageHero
             eyebrow="Homelab"
-            title="Mon terrain d'expérimentation."
-            description="Un environnement personnel dans lequel je peux expérimenter librement avec le réseau, les systèmes, la virtualisation, l'automatisation et le DevOps."
+            title="Construire pour comprendre."
+            description="Un serveur personnel sur lequel j'expérimente l'infrastructure, les systèmes et l'automatisation."
         />
 
-        <InfoGrid features={features} />
-
         <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
-            <div class="mb-12 max-w-2xl">
-                <p class="font-mono text-sm font-medium text-primary">
-                    Architecture
-                </p>
-
-                <h2 class="mt-2 text-3xl font-bold tracking-tight">
-                    Une infrastructure que je construis moi-même.
-                </h2>
-
-                <p class="mt-4 text-muted-foreground">
-                    Le but n'est pas simplement d'héberger quelques services. Je
-                    cherche à comprendre chaque couche de l'infrastructure et à
-                    automatiser progressivement sa gestion.
-                </p>
-            </div>
-
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <article class="rounded-xl border border-border p-6">
-                    <Server class="size-5" />
-
-                    <h3 class="mt-5 font-semibold">Virtualisation</h3>
-
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                        Proxmox constitue la base de mon infrastructure. Je
-                        l'utilise pour créer et administrer mes machines
-                        virtuelles et mes différents environnements.
+            <div class="grid gap-12 md:grid-cols-2 md:items-end">
+                <div>
+                    <p class="font-mono text-sm font-medium text-primary">
+                        Le matériel
                     </p>
 
-                    <div class="mt-5 flex flex-wrap gap-2">
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Proxmox
-                        </span>
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight">
+                        Un serveur dédié à l'expérimentation.
+                    </h2>
 
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            VM
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            LXC
-                        </span>
-                    </div>
-                </article>
-
-                <article class="rounded-xl border border-border p-6">
-                    <Network class="size-5" />
-
-                    <h3 class="mt-5 font-semibold">Networking</h3>
-
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                        Je construis progressivement mon réseau autour du DNS,
-                        des VLAN, du routage et des différents composants
-                        nécessaires au fonctionnement des services.
+                    <p class="mt-4 leading-7 text-muted-foreground">
+                        Le cœur de mon homelab est un Minisforum MS-A2. Une
+                        machine suffisamment puissante pour faire tourner
+                        plusieurs environnements tout en restant compacte et
+                        silencieuse.
                     </p>
 
-                    <div class="mt-5 flex flex-wrap gap-2">
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            DNS
-                        </span>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="rounded-xl border border-border p-5">
+                            <p class="font-mono text-2xl font-semibold">16</p>
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                cœurs CPU
+                            </p>
+                        </div>
 
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            VLAN
-                        </span>
+                        <div class="rounded-xl border border-border p-5">
+                            <p class="font-mono text-2xl font-semibold">32</p>
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                threads
+                            </p>
+                        </div>
 
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Routing
-                        </span>
+                        <div class="rounded-xl border border-border p-5">
+                            <p class="font-mono text-2xl font-semibold">
+                                96 Go
+                            </p>
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                de RAM
+                            </p>
+                        </div>
+
+                        <div class="rounded-xl border border-border p-5">
+                            <p class="font-mono text-2xl font-semibold">2 To</p>
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                de stockage
+                            </p>
+                        </div>
                     </div>
-                </article>
+                </div>
 
-                <article class="rounded-xl border border-border p-6">
-                    <Cpu class="size-5" />
+                <div class="flex min-h-80 items-center justify-center rounded-2xl border border-border bg-muted/20 p-8">
+                    <div class="text-center">
+                        <Server class="mx-auto size-12 text-primary" />
 
-                    <h3 class="mt-5 font-semibold">Sysadmin</h3>
+                        <p class="mt-5 font-mono text-sm">Minisforum MS-A2</p>
 
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                        Installation, configuration et administration de
-                        systèmes Linux et des services qui composent
-                        l'infrastructure.
-                    </p>
-
-                    <div class="mt-5 flex flex-wrap gap-2">
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Linux
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Ubuntu
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            SSH
-                        </span>
+                        <p class="mt-2 text-sm text-muted-foreground">
+                            Ryzen 9 9955HX
+                        </p>
                     </div>
-                </article>
-
-                <article class="rounded-xl border border-border p-6">
-                    <GitBranch class="size-5" />
-
-                    <h3 class="mt-5 font-semibold">Infrastructure as Code</h3>
-
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                        Mon objectif est de pouvoir gérer mon infrastructure
-                        depuis Git plutôt que de dépendre de configurations
-                        manuelles.
-                    </p>
-
-                    <div class="mt-5 flex flex-wrap gap-2">
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Terraform
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Ansible
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Git
-                        </span>
-                    </div>
-                </article>
-
-                <article class="rounded-xl border border-border p-6">
-                    <Boxes class="size-5" />
-
-                    <h3 class="mt-5 font-semibold">Containers</h3>
-
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                        J'expérimente également avec la conteneurisation et
-                        l'orchestration pour faire évoluer progressivement mon
-                        infrastructure.
-                    </p>
-
-                    <div class="mt-5 flex flex-wrap gap-2">
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Docker
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Kubernetes
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            K3s
-                        </span>
-                    </div>
-                </article>
-
-                <article class="rounded-xl border border-border p-6">
-                    <HardDrive class="size-5" />
-
-                    <h3 class="mt-5 font-semibold">Storage</h3>
-
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                        Je travaille également sur la gestion du stockage et
-                        l'organisation des données nécessaires aux différents
-                        services.
-                    </p>
-
-                    <div class="mt-5 flex flex-wrap gap-2">
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Storage
-                        </span>
-
-                        <span class="rounded-md bg-muted px-2.5 py-1 font-mono text-xs">
-                            Backups
-                        </span>
-                    </div>
-                </article>
+                </div>
             </div>
         </section>
 
         <section class="border-y border-border bg-muted/20">
-            <div class="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:grid-cols-2 md:items-center md:py-28">
-                <div>
+            <div class="mx-auto max-w-7xl px-4 py-20 md:py-28">
+                <div class="max-w-2xl">
                     <p class="font-mono text-sm font-medium text-primary">
-                        Infrastructure as Code
+                        Pourquoi ?
                     </p>
 
                     <h2 class="mt-2 text-3xl font-bold tracking-tight">
-                        Mon homelab devient progressivement reproductible.
+                        Sortir du simple environnement de développement.
                     </h2>
 
-                    <p class="mt-4 max-w-xl leading-7 text-muted-foreground">
-                        L'objectif est de pouvoir partir d'un dépôt Git et
-                        reconstruire progressivement l'infrastructure : créer
-                        les machines avec Terraform, les configurer avec Ansible
-                        puis faire évoluer l'ensemble vers une infrastructure
-                        davantage automatisée.
+                    <p class="mt-4 leading-7 text-muted-foreground">
+                        Un homelab me permet de travailler sur des problèmes que
+                        l'on rencontre rarement en développant uniquement sur sa
+                        machine : déployer une machine, configurer un service,
+                        gérer le réseau ou automatiser une configuration.
                     </p>
                 </div>
 
-                <div class="rounded-xl border border-border bg-background p-6 font-mono text-sm shadow-sm">
-                    <div class="flex items-center gap-2 border-b border-border pb-4 text-muted-foreground">
-                        <span>~/homelab</span>
-                    </div>
+                <div class="mt-12 grid gap-4 md:grid-cols-3">
+                    <article class="rounded-xl border border-border bg-background p-6">
+                        <Terminal class="size-5" />
 
-                    <div class="space-y-3 pt-5 text-muted-foreground">
-                        <p>
-                            <span class="text-primary">├──</span>
-                            terraform/
-                        </p>
+                        <h3 class="mt-5 font-semibold">
+                            Comprendre les systèmes
+                        </h3>
 
-                        <p>
-                            <span class="text-primary">├──</span>
-                            ansible/
+                        <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                            Linux, processus, services, permissions, SSH et
+                            fonctionnement des machines.
                         </p>
+                    </article>
 
-                        <p>
-                            <span class="text-primary">├──</span>
-                            network/
-                        </p>
+                    <article class="rounded-xl border border-border bg-background p-6">
+                        <Network class="size-5" />
 
-                        <p>
-                            <span class="text-primary">├──</span>
-                            services/
-                        </p>
+                        <h3 class="mt-5 font-semibold">Comprendre le réseau</h3>
 
-                        <p>
-                            <span class="text-primary">└──</span>
-                            README.md
+                        <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                            Communication entre machines, adressage, DNS et
+                            exposition des services.
                         </p>
-                    </div>
+                    </article>
+
+                    <article class="rounded-xl border border-border bg-background p-6">
+                        <Workflow class="size-5" />
+
+                        <h3 class="mt-5 font-semibold">Automatiser</h3>
+
+                        <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                            Remplacer progressivement les opérations manuelles
+                            par du code versionné et reproductible.
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
-            <div class="grid gap-12 md:grid-cols-2">
-                <div>
-                    <p class="font-mono text-sm font-medium text-primary">
-                        Philosophie
-                    </p>
+            <div class="mb-12 max-w-2xl">
+                <p class="font-mono text-sm font-medium text-primary">
+                    Expérimentations
+                </p>
 
-                    <h2 class="mt-2 text-3xl font-bold tracking-tight">
-                        Apprendre en construisant.
-                    </h2>
-                </div>
+                <h2 class="mt-2 text-3xl font-bold tracking-tight">
+                    Des problèmes concrets plutôt qu'une collection d'outils.
+                </h2>
 
-                <div class="space-y-6 text-sm leading-7 text-muted-foreground">
-                    <p>
-                        Mon homelab est avant tout un environnement
-                        d'apprentissage. Je peux y tester une architecture, la
-                        casser, recommencer et automatiser ce qui fonctionne.
-                    </p>
+                <p class="mt-4 text-muted-foreground">
+                    Chaque ajout au homelab part d'un besoin ou d'une question
+                    que je veux résoudre.
+                </p>
+            </div>
 
-                    <p>
-                        Chaque nouveau service est également l'occasion de
-                        travailler sur plusieurs couches : réseau, système,
-                        sécurité, déploiement et observabilité.
-                    </p>
+            <div class="space-y-4">
+                <article class="group flex flex-col gap-6 rounded-xl border border-border p-6 md:flex-row md:items-center md:justify-between">
+                    <div class="flex gap-5">
+                        <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted">
+                            <Server class="size-5" />
+                        </div>
 
-                    <div class="flex gap-4 rounded-xl border border-border p-5">
-                        <ShieldCheck class="mt-0.5 size-5 shrink-0 text-primary" />
+                        <div>
+                            <h3 class="font-semibold">
+                                Déployer une nouvelle machine
+                            </h3>
 
-                        <p>
-                            L'objectif n'est pas de construire l'infrastructure
-                            la plus complexe possible, mais de comprendre
-                            pourquoi elle fonctionne et de pouvoir la
-                            reproduire.
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                Créer et configurer des machines virtuelles sans
+                                refaire manuellement chaque étape.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                        Proxmox · Terraform · Ansible
+                    </div>
+                </article>
+
+                <article class="group flex flex-col gap-6 rounded-xl border border-border p-6 md:flex-row md:items-center md:justify-between">
+                    <div class="flex gap-5">
+                        <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted">
+                            <Network class="size-5" />
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold">
+                                Donner des noms aux machines
+                            </h3>
+
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                Mettre en place un réseau interne où les
+                                machines et services sont accessibles par leur
+                                nom plutôt que par leur adresse IP.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                        DNS · Réseau
+                    </div>
+                </article>
+
+                <article class="group flex flex-col gap-6 rounded-xl border border-border p-6 md:flex-row md:items-center md:justify-between">
+                    <div class="flex gap-5">
+                        <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted">
+                            <Boxes class="size-5" />
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold">
+                                Expérimenter avec les conteneurs
+                            </h3>
+
+                            <p class="mt-1 text-sm text-muted-foreground">
+                                Comprendre comment déployer et faire évoluer des
+                                applications conteneurisées.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                        Docker · K3s
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Workflow -->
+        <section class="border-y border-border bg-muted/20">
+            <div class="mx-auto max-w-7xl px-4 py-20 md:py-28">
+                <div class="grid gap-12 md:grid-cols-2 md:items-center">
+                    <div>
+                        <p class="font-mono text-sm font-medium text-primary">
+                            Méthode
                         </p>
+
+                        <h2 class="mt-2 text-3xl font-bold tracking-tight">
+                            Expérimenter. Automatiser. Recommencer.
+                        </h2>
+
+                        <p class="mt-4 leading-7 text-muted-foreground">
+                            Le homelab n'a pas vocation à être parfait. Il
+                            évolue au fur et à mesure de mes expérimentations et
+                            de ce que j'apprends.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 rounded-xl border border-border bg-background p-5">
+                            <span class="font-mono text-sm text-primary">
+                                01
+                            </span>
+
+                            <span class="font-medium">Tester une idée</span>
+                        </div>
+
+                        <div class="flex items-center gap-4 rounded-xl border border-border bg-background p-5">
+                            <span class="font-mono text-sm text-primary">
+                                02
+                            </span>
+
+                            <span class="font-medium">
+                                Comprendre ce qui se passe
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-4 rounded-xl border border-border bg-background p-5">
+                            <span class="font-mono text-sm text-primary">
+                                03
+                            </span>
+
+                            <span class="font-medium">
+                                Automatiser ce qui fonctionne
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-4 rounded-xl border border-border bg-background p-5">
+                            <span class="font-mono text-sm text-primary">
+                                04
+                            </span>
+
+                            <span class="font-medium">
+                                Repartir de zéro si nécessaire
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
