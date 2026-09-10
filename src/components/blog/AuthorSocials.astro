@@ -29,7 +29,6 @@ const { showAuthorInfo = true } = Astro.props;
         <h4 class="text-lg font-medium">Me suivre</h4>
 
         <div class="flex flex-wrap gap-3">
-            <!-- LinkedIn -->
             {socialLinks.linkedin.show && (
                 <a
                     href={socialLinks.linkedin.url}
@@ -49,7 +48,6 @@ const { showAuthorInfo = true } = Astro.props;
                 </a>
             )}
 
-            <!-- GitHub -->
             {socialLinks.github.show && (
                 <a
                     href={socialLinks.github.url}
@@ -73,7 +71,6 @@ const { showAuthorInfo = true } = Astro.props;
                 </a>
             )}
 
-            <!-- Twitter/X -->
             {socialLinks.twitter.show && (
                 <a
                     href={socialLinks.twitter.url}
@@ -93,7 +90,6 @@ const { showAuthorInfo = true } = Astro.props;
                 </a>
             )}
 
-            <!-- Email -->
             {socialLinks.email.show && (
                 <a
                     href={socialLinks.email.url}
@@ -117,7 +113,6 @@ const { showAuthorInfo = true } = Astro.props;
                 </a>
             )}
 
-            <!-- GitLab (si activé) -->
             {socialLinks.gitlab?.show && (
                 <a
                     href={socialLinks.gitlab.url}
@@ -137,7 +132,6 @@ const { showAuthorInfo = true } = Astro.props;
                 </a>
             )}
 
-            <!-- Mastodon (si activé) -->
             {socialLinks.mastodon?.show && (
                 <a
                     href={socialLinks.mastodon.url}

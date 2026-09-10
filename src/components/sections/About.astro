@@ -2,17 +2,21 @@
 import AboutTimeline from "@/components/about/AboutTimeline.astro";
 ---
 
-<section id="about" class="border-y border-border bg-muted/20 relative overflow-hidden">
-    <!-- Effet de gradient en arrière-plan -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+<section
+    id="about"
+    class="border-y border-border bg-muted/20 relative overflow-hidden"
+>
+    <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent pointer-events-none"></div>
 
     <div class="mx-auto max-w-7xl px-4 my-20 md:my-28 relative z-10">
         <div class="mb-10 max-w-2xl animate-fade-up">
-            <p class="text-sm text-primary font-medium">La timeline/</p>
+            <p class="font-mono text-sm text-primary font-medium">
+                La timeline
+            </p>
 
-            <h3 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl animate-fade-up animation-delay-100">
-                De l'informatique au DevOps.
-            </h3>
+            <h2 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl animate-fade-up animation-delay-100">
+                De l'informatique au DevOps
+            </h2>
 
             <p class="mt-4 text-muted-foreground animate-fade-up animation-delay-200">
                 Un parcours construit progressivement, du développement logiciel

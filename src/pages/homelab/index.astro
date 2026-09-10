@@ -40,17 +40,18 @@ const features = [
 >
     <main>
         <PageHero
-            eyebrow="homelab/"
+            eyebrow="Homelab"
             title="Mon terrain d'expérimentation."
             description="Un environnement personnel dans lequel je peux expérimenter librement avec le réseau, les systèmes, la virtualisation, l'automatisation et le DevOps."
         />
 
         <InfoGrid features={features} />
 
-        <!-- Architecture -->
         <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
             <div class="mb-12 max-w-2xl">
-                <p class="text-sm font-medium text-primary">Architecture</p>
+                <p class="font-mono text-sm font-medium text-primary">
+                    Architecture
+                </p>
 
                 <h2 class="mt-2 text-3xl font-bold tracking-tight">
                     Une infrastructure que je construis moi-même.
@@ -64,7 +65,6 @@ const features = [
             </div>
 
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Virtualisation -->
                 <article class="rounded-xl border border-border p-6">
                     <Server class="size-5" />
 
@@ -91,7 +91,6 @@ const features = [
                     </div>
                 </article>
 
-                <!-- Network -->
                 <article class="rounded-xl border border-border p-6">
                     <Network class="size-5" />
 
@@ -118,7 +117,6 @@ const features = [
                     </div>
                 </article>
 
-                <!-- Sysadmin -->
                 <article class="rounded-xl border border-border p-6">
                     <Cpu class="size-5" />
 
@@ -145,7 +143,6 @@ const features = [
                     </div>
                 </article>
 
-                <!-- IaC -->
                 <article class="rounded-xl border border-border p-6">
                     <GitBranch class="size-5" />
 
@@ -172,7 +169,6 @@ const features = [
                     </div>
                 </article>
 
-                <!-- Containers -->
                 <article class="rounded-xl border border-border p-6">
                     <Boxes class="size-5" />
 
@@ -199,7 +195,6 @@ const features = [
                     </div>
                 </article>
 
-                <!-- Storage -->
                 <article class="rounded-xl border border-border p-6">
                     <HardDrive class="size-5" />
 
@@ -224,11 +219,10 @@ const features = [
             </div>
         </section>
 
-        <!-- IaC -->
         <section class="border-y border-border bg-muted/20">
             <div class="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:grid-cols-2 md:items-center md:py-28">
                 <div>
-                    <p class="text-sm font-medium text-primary">
+                    <p class="font-mono text-sm font-medium text-primary">
                         Infrastructure as Code
                     </p>
 
@@ -280,11 +274,12 @@ const features = [
             </div>
         </section>
 
-        <!-- Security -->
         <section class="mx-auto max-w-7xl px-4 py-20 md:py-28">
             <div class="grid gap-12 md:grid-cols-2">
                 <div>
-                    <p class="text-sm font-medium text-primary">Philosophie</p>
+                    <p class="font-mono text-sm font-medium text-primary">
+                        Philosophie
+                    </p>
 
                     <h2 class="mt-2 text-3xl font-bold tracking-tight">
                         Apprendre en construisant.
@@ -314,31 +309,6 @@ const features = [
                             reproduire.
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="border-t border-border">
-            <div class="mx-auto max-w-7xl px-4 py-16 md:py-20">
-                <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
-                    <div>
-                        <p class="font-semibold">
-                            Voir les détails de mon infrastructure
-                        </p>
-
-                        <p class="mt-1 text-sm text-muted-foreground">
-                            Architecture, services et projets en cours.
-                        </p>
-                    </div>
-
-                    <a
-                        href="/blog"
-                        class="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
-                    >
-                        Voir les articles
-                        <ExternalLink class="size-4" />
-                    </a>
                 </div>
             </div>
         </section>

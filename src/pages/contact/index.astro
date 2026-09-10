@@ -27,56 +27,47 @@ const details = [
 
     <section class="mx-auto max-w-screen-2xl px-4 pb-20 md:pb-28">
         <div class="mx-auto max-w-xl">
-            <!-- Email -->
             <a
                 href={`mailto:${contactInfo.email}`}
-                class="group flex items-center justify-between border-b border-border py-6 transition-colors hover:border-foreground/40"
+                class="group flex items-center justify-between border-b border-border py-6 transition-colors hover:border-foreground/40 hover:text-primary"
             >
                 <span class="flex items-center gap-3">
                     <Mail class="h-4 w-4 text-muted-foreground" />
                     <span class="font-medium">Email</span>
                 </span>
-                <span
-                    class="text-muted-foreground transition-colors group-hover:text-foreground"
-                >
+                <span class="text-muted-foreground transition-colors group-hover:text-primary">
                     {contactInfo.email}
                 </span>
             </a>
 
-            <!-- Réseaux sociaux -->
-            {
-                contactInfo.links.map((link) => {
-                    const IconComponent = iconMap[link.icon];
-                    return (
-                        <a
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="group flex items-center justify-between border-b border-border py-6 transition-colors hover:border-foreground/40"
-                        >
-                            <span class="flex items-center gap-3">
-                                <IconComponent class="h-4 w-4 text-muted-foreground" />
-                                <span class="font-medium">{link.name}</span>
-                            </span>
-                            <span class="text-muted-foreground transition-colors group-hover:text-foreground">
-                                {link.url.replace("https://", "")}
-                            </span>
-                        </a>
-                    );
-                })
-            }
-
-            <!-- Infos complémentaires -->
-            {
-                details.map((detail) => (
-                    <div class="flex items-center justify-between border-b border-border py-6 last:border-b-0">
-                        <span class="font-medium">{detail.label}</span>
-                        <span class="text-right text-muted-foreground">
-                            {detail.value}
+            {contactInfo.links.map((link) => {
+                const IconComponent = iconMap[link.icon];
+                return (
+                    <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center justify-between border-b border-border py-6 transition-colors hover:border-foreground/40 hover:text-primary"
+                    >
+                        <span class="flex items-center gap-3">
+                            <IconComponent class="h-4 w-4 text-muted-foreground" />
+                            <span class="font-medium">{link.name}</span>
                         </span>
-                    </div>
-                ))
-            }
+                        <span class="text-muted-foreground transition-colors hover:text-primary">
+                            {link.url.replace("https://", "")}
+                        </span>
+                    </a>
+                );
+            })}
+
+            {details.map((detail) => (
+                <div class="flex items-center justify-between border-b border-border py-6 last:border-b-0">
+                    <span class="font-medium">{detail.label}</span>
+                    <span class="text-right text-muted-foreground">
+                        {detail.value}
+                    </span>
+                </div>
+            ))}
         </div>
     </section>
 </Layout>

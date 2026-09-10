@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://teo-franoux.fr/sitemap-index.xml

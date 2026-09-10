@@ -3,54 +3,43 @@ import { timeline } from "@/data/timeline";
 ---
 
 <div class="relative">
-    <!-- Ligne de timeline avec gradient -->
-    <div class="absolute left-38 top-0 hidden h-full w-px bg-gradient-to-b from-primary via-border to-border md:block">
-    </div>
+    <div class="absolute left-38 top-0 hidden h-full w-px bg-linear-to-b from-primary via-border to-border md:block"></div>
 
     <div class="space-y-10">
-        {
-            timeline.map((item) => (
-                <article class="relative grid gap-4 md:grid-cols-[10rem_1fr] md:gap-10">
-                    <!-- Date -->
-                    <div class="font-mono text-sm text-muted-foreground">
-                        {item.period}
-                    </div>
+        {timeline.map((item) => (
+            <article class="relative grid gap-4 md:grid-cols-[10rem_1fr] md:gap-10">
+                <div class="text-sm text-muted-foreground">{item.period}</div>
 
-                    <!-- Timeline point -->
-                    <div
-                        class="absolute left-37 top-1 hidden size-2.5 rounded-full bg-primary ring-4 ring-muted/20 md:block transition-transform hover:scale-150 hover:ring-8 shadow-glow"
-                    />
+                <div class="absolute left-37 top-1 hidden size-2.5 rounded-full bg-primary ring-4 ring-muted/20 md:block transition-transform hover:scale-150 hover:ring-8 shadow-glow" />
 
-                    <!-- Content -->
-                    <div class="max-w-2xl group hover:translate-x-2 transition-smooth">
-                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                            <h4 class="font-semibold group-hover:text-primary transition-colors-smooth">
-                                {item.title}
-                            </h4>
+                <div class="max-w-2xl group hover:translate-x-2 transition-smooth">
+                    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <h3 class="font-semibold group-hover:text-primary transition-colors-smooth">
+                            {item.title}
+                        </h3>
 
-                            {item.location && (
-                                <span class="text-sm text-muted-foreground">
-                                    {item.location}
-                                </span>
-                            )}
-                        </div>
-
-                        <p class="mt-1 text-sm text-muted-foreground">
-                            {item.organization}
-                        </p>
-
-                        <p class="mt-3 text-sm leading-6 text-muted-foreground group-hover:text-foreground transition-colors-smooth">
-                            {item.description}
-                        </p>
-
-                        {item.highlight && (
-                            <p class="mt-3 font-mono text-xs text-primary animate-pulse">
-                                → {item.highlight}
-                            </p>
+                        {item.location && (
+                            <span class="text-sm text-muted-foreground">
+                                {item.location}
+                            </span>
                         )}
                     </div>
-                </article>
-            ))
-        }
+
+                    <p class="mt-1 text-sm text-muted-foreground">
+                        {item.organization}
+                    </p>
+
+                    <p class="mt-3 text-sm leading-6 text-muted-foreground group-hover:text-foreground transition-colors-smooth">
+                        {item.description}
+                    </p>
+
+                    {item.highlight && (
+                        <p class="mt-3 font-mono text-xs text-primary">
+                            → {item.highlight}
+                        </p>
+                    )}
+                </div>
+            </article>
+        ))}
     </div>
 </div>
