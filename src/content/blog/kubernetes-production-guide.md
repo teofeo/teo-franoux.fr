@@ -9,6 +9,7 @@ tags:
   - Infrastructure
   - Cloud Native
   - Linux
+draft: true
 ---
 
 # Déployer un Cluster Kubernetes en Production

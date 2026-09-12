@@ -13,13 +13,17 @@ import InfoGrid from "@/components/page/InfoGrid.astro";
 import { Newspaper, CalendarDays, Tags } from "lucide-astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-    const posts: CollectionEntry<"blog">[] = await getCollection("blog");
-
-    const sortedPosts = posts.sort(
-        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    const showDrafts = import.meta.env.SHOW_DRAFTS === "true";
+    const posts: CollectionEntry<"blog">[] = await getCollection(
+        "blog",
+        ({ data }) => {
+            return showDrafts ? true : !data.draft;
+        },
     );
 
-    return paginate(sortedPosts, { pageSize: 9 });
+    posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    return paginate(posts, { pageSize: 9 });
 }) satisfies GetStaticPaths;
 
 interface Props {

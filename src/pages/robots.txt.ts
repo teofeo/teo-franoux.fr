@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const siteUrl = process.env.PUBLIC_SITE_URL;
 
 export const GET: APIRoute = () => {
     const body = `User-agent: *

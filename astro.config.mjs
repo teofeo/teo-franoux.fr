@@ -1,17 +1,32 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from "@astrojs/markdown-satteri";
 import { mdastReadingTimePlugin } from "./src/mdast/mdast-reading-time";
-const { PUBLIC_SITE_URL } = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+
 
 export default defineConfig({
   vite: {
     plugins: [tailwind()],
   },
-  site: PUBLIC_SITE_URL,
+  env: {
+      schema: {
+        PUBLIC_SITE_URL: envField.string({
+          context: 'client',
+          access: 'public',
+          optional: false,
+        }),
+        SHOW_DRAFTS: envField.boolean({
+          context: 'server',
+          access: 'secret',
+          optional: true,
+          default: false,
+        }),
+      },
+    },
+  site: process.env.PUBLIC_SITE_URL,
   integrations: [sitemap()],
   markdown: {
     processor: satteri({
