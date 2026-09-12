@@ -8,8 +8,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "bun --env-file=.env astro dev",
+    "build": "bun --env-file=.env astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

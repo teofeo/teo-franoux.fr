@@ -1,11 +1,9 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
-import { loadEnv } from 'vite';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from "@astrojs/markdown-satteri";
 import { mdastReadingTimePlugin } from "./src/mdast/mdast-reading-time";
-
 
 export default defineConfig({
   vite: {

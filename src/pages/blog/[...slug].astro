@@ -12,7 +12,14 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-    const posts: CollectionEntry<"blog">[] = await getCollection("blog");
+    const showDrafts = import.meta.env.SHOW_DRAFTS === "true";
+
+    const posts: CollectionEntry<"blog">[] = await getCollection(
+        "blog",
+        ({ data }) => {
+            return showDrafts ? true : !data.draft;
+        },
+    );
 
     return posts.map((post) => ({
         params: {
