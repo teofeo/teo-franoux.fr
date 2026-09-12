@@ -2,7 +2,10 @@
 import { getCollection } from "astro:content";
 import PostGrid from "@/components/blog/PostGrid.astro";
 
-const posts = await getCollection("blog");
+const showDrafts = import.meta.env.SHOW_DRAFTS === "true";
+const posts = await getCollection("blog", ({ data }) => {
+    return showDrafts ? true : !data.draft;
+});
 
 const latestPosts = posts
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
