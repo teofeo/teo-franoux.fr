@@ -10,7 +10,13 @@ interface Props {
 
 const { currentSlug, currentTags, limit = 3 } = Astro.props;
 
-const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
+const showDrafts = import.meta.env.SHOW_DRAFTS === "true";
+const allPosts: CollectionEntry<"blog">[] = await getCollection(
+    "blog",
+    ({ data }) => {
+        return showDrafts ? true : !data.draft;
+    },
+);
 
 const relatedPosts = allPosts
     .filter((post) => post.id !== currentSlug)
