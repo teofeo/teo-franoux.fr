@@ -19,31 +19,23 @@ const { title = siteConfig.title, description = siteConfig.description } =
 
 <!doctype html>
 <html lang="fr">
-    <script is:inline>
-        function applyTheme() {
-            let theme = localStorage.getItem("theme");
-
-            if (!theme) {
-                theme = window.matchMedia("(prefers-color-scheme: dark)")
-                    .matches
-                    ? "dark"
-                    : "light";
-            }
-            if (theme === "dark") {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-        }
-
-        applyTheme();
-
-        document.addEventListener("astro:page-load", applyTheme);
-        document.addEventListener("astro:after-swap", applyTheme);
-    </script>
     <head>
         <meta charset="UTF-8" />
 
+        <script is:inline>
+            (() => {
+                const theme = localStorage.getItem("theme");
+
+                if (
+                    theme === "dark" ||
+                    (!theme &&
+                        window.matchMedia("(prefers-color-scheme: dark)")
+                            .matches)
+                ) {
+                    document.documentElement.classList.add("dark");
+                }
+            })();
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <ClientRouter />

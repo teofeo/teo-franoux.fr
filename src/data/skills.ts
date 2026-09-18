@@ -4,7 +4,6 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  // Infrastructure
   {
     name: "Proxmox",
     category: "Infrastructure",
@@ -18,7 +17,6 @@ export const skills: Skill[] = [
     category: "Infrastructure",
   },
 
-  // Cloud
   {
     name: "AWS",
     category: "Cloud",
@@ -28,7 +26,6 @@ export const skills: Skill[] = [
     category: "Cloud",
   },
 
-  // Automation
   {
     name: "Terraform",
     category: "Automation",
@@ -46,7 +43,6 @@ export const skills: Skill[] = [
     category: "Automation",
   },
 
-  // Containers
   {
     name: "Docker",
     category: "Containers",
@@ -56,7 +52,6 @@ export const skills: Skill[] = [
     category: "Containers",
   },
 
-  // Other
   {
     name: "Git",
     category: "Other",

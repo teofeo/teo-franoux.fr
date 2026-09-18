@@ -16,7 +16,6 @@ const getPageUrl = (page: number) => {
 
 const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-// Afficher au maximum 5 pages autour de la page actuelle
 const visiblePages = pages.filter((page) => {
     if (totalPages <= 7) return true;
     if (page === 1 || page === totalPages) return true;

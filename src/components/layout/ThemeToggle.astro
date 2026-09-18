@@ -1,91 +1,33 @@
+---
+import { Sun, Moon } from "lucide-astro";
+---
+
 <button
-    id="theme-toggle"
+    data-theme-toggle
     type="button"
     class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-smooth hover:bg-accent hover:text-primary hover:scale-110 active:scale-95 hover:cursor-pointer"
     aria-label="Changer de thème"
 >
-    <svg
-        id="theme-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="transition-transform duration-500"
-    >
-        <circle cx="12" cy="12" r="4"></circle>
-        <path d="M12 2v2"></path>
-        <path d="M12 20v2"></path>
-        <path d="m4.93 4.93 1.41 1.41"></path>
-        <path d="m17.66 17.66 1.41 1.41"></path>
-        <path d="M2 12h2"></path>
-        <path d="M20 12h2"></path>
-        <path d="m6.34 17.66-1.41 1.41"></path>
-        <path d="m19.07 4.93-1.41 1.41"></path>
-    </svg>
+    <Sun class="size-4.5 dark:hidden" />
+    <Moon class="hidden size-4.5 dark:block" />
 </button>
 
 <script>
-    function initThemeToggle() {
-        const button = document.querySelector("#theme-toggle");
-        const icon = document.querySelector("#theme-icon");
+    const initThemeToggle = () => {
+        document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+            if (button.hasAttribute("data-theme-initialized")) return;
 
-        if (!button || !icon) return;
+            button.setAttribute("data-theme-initialized", "");
 
-        // Mettre à jour l'icône selon le thème actuel
-        function updateIcon() {
-            if (!icon) return;
+            button.addEventListener("click", () => {
+                const isDark =
+                    document.documentElement.classList.toggle("dark");
 
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                // Icône lune (mode sombre actif)
-                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-            } else {
-                // Icône soleil (mode clair actif)
-                icon.innerHTML = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>';
-            }
-        }
-
-        // Initialiser l'icône au chargement
-        updateIcon();
-
-        // Retirer l'ancien event listener s'il existe (pour éviter les doublons)
-        const newButton = button.cloneNode(true);
-        button.parentNode?.replaceChild(newButton, button);
-
-        newButton.addEventListener("click", () => {
-            document.documentElement.classList.toggle("dark");
-
-            const newTheme = document.documentElement.classList.contains("dark")
-                ? "dark"
-                : "light";
-
-            localStorage.setItem("theme", newTheme);
-
-            // Mettre à jour l'icône immédiatement
-            const updatedIcon = document.querySelector("#theme-icon");
-            if (updatedIcon) {
-                const isDark = document.documentElement.classList.contains('dark');
-                if (isDark) {
-                    updatedIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-                } else {
-                    updatedIcon.innerHTML = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>';
-                }
-            }
+                localStorage.setItem("theme", isDark ? "dark" : "light");
+            });
         });
-    }
+    };
 
-    // Initialiser au chargement initial
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initThemeToggle);
-    } else {
-        initThemeToggle();
-    }
-
-    // Ré-initialiser après chaque navigation client-side
-    document.addEventListener('astro:page-load', initThemeToggle);
+    initThemeToggle();
+    document.addEventListener("astro:page-load", initThemeToggle);
 </script>
