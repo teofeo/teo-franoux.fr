@@ -10,9 +10,9 @@ const { headings } = Astro.props as { headings: Heading[] };
 const filtered = headings.filter((h) => h.depth <= 3);
 ---
 
-<nav aria-label="Sommaire" class="text-sm mb-6">
+<nav aria-label="Sommaire" class="text-sm">
     <p class="mb-3 font-semibold text-foreground">Sommaire</p>
-    <ul class="space-y-2 border-l border-border">
+    <ul class="space-y-2 border-l border-border pb-2">
         {filtered.map((h) => (
             <li class={h.depth === 3 ? "pl-6" : "pl-3"}>
                 <a
@@ -53,7 +53,7 @@ const filtered = headings.filter((h) => h.depth <= 3);
                 });
             },
             {
-                rootMargin: "0px 0px -70% 0px",
+                rootMargin: "-64px 0px -70%  0px",
                 threshold: 0,
             },
         );
