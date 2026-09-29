@@ -1,4 +1,3 @@
-
 ---
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
@@ -12,10 +11,14 @@ import { siteConfig } from "@/config/site";
 interface Props {
     title?: string;
     description?: string;
+    mainClass?: string;
 }
 
-const { title = siteConfig.title, description = siteConfig.description } =
-    Astro.props;
+const {
+    title = siteConfig.title,
+    description = siteConfig.description,
+    mainClass,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -68,10 +71,10 @@ const { title = siteConfig.title, description = siteConfig.description } =
         <link rel="manifest" href="/site.webmanifest" />
     </head>
 
-    <body class="min-h-screen bg-background text-foreground antialiased">
+    <body class="flex min-h-svh flex-col bg-background text-foreground antialiased">
         <Header />
 
-        <main class="">
+        <main class:list={["flex-1", mainClass]}>
             <slot />
         </main>
 

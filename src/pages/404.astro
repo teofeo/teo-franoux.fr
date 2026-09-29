@@ -1,0 +1,103 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+    title="Page introuvable - Téo Franoux"
+    description="La page que vous cherchez n'existe pas ou a été déplacée."
+    mainClass="flex items-center"
+>
+    <section class="mx-auto w-full max-w-7xl px-4 py-20 md:py-28">
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <div>
+                <p class="font-mono text-sm font-medium text-primary animate-fade-up animation-delay-0">
+                    Erreur 404
+                </p>
+
+                <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl animate-fade-up animation-delay-100">
+                    Page introuvable.
+                </h1>
+
+                <p class="mt-6 max-w-xl text-lg leading-8 text-muted-foreground animate-fade-up animation-delay-200">
+                    La page que vous cherchez n'existe pas, a été déplacée ou
+                    n'a jamais été déployée.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4 animate-fade-up animation-delay-300">
+                    <a
+                        href="/"
+                        class="group relative overflow-hidden rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-soft transition-smooth hover:shadow-glow hover:scale-105"
+                    >
+                        <span class="relative z-10">Retour à l'accueil</span>
+                        <div class="absolute inset-0 z-0 bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
+                    </a>
+
+                    <a
+                        href="/blog"
+                        class="rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-smooth hover:bg-accent hover:border-primary/50 hover:scale-105 shadow-soft"
+                    >
+                        Voir les articles
+                    </a>
+                </div>
+            </div>
+
+            <div class="overflow-hidden rounded-xl border border-border bg-muted/30 font-mono text-sm shadow-soft hover-lift hover:shadow-glow hover:border-primary/30 transition-smooth animate-fade-up animation-delay-200">
+                <div class="flex items-center gap-2 border-b border-border px-4 py-3">
+                    <span class="text-muted-foreground">●</span>
+                    <span class="text-muted-foreground">●</span>
+                    <span class="text-muted-foreground">●</span>
+
+                    <span class="ml-3 text-xs text-muted-foreground">
+                        teo@portfolio
+                    </span>
+                </div>
+
+                <div class="space-y-3 p-6">
+                    <p>
+                        <span class="text-muted-foreground">$</span>
+                        curl -I <span id="requested-path">/cette-page</span>
+                    </p>
+
+                    <p class="text-muted-foreground">HTTP/2 404 Not Found</p>
+
+                    <p>
+                        <span class="text-muted-foreground">$</span>
+                        ls <span id="requested-path-ls">/cette-page</span>
+                    </p>
+
+                    <p class="text-muted-foreground">
+                        ls: impossible d'accéder : Aucun fichier ou dossier de
+                        ce type
+                    </p>
+
+                    <p>
+                        <span class="text-muted-foreground">$</span>
+                        cd ~
+                    </p>
+
+                    <p>
+                        <span class="text-muted-foreground">$</span>
+                        <span class="animate-pulse">_</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const showRequestedPath = () => {
+            let path = window.location.pathname;
+
+            try {
+                path = decodeURIComponent(path);
+            } catch {}
+
+            document
+                .querySelectorAll("#requested-path, #requested-path-ls")
+                .forEach((el) => (el.textContent = path));
+        };
+
+        showRequestedPath();
+        document.addEventListener("astro:page-load", showRequestedPath);
+    </script>
+</Layout>
