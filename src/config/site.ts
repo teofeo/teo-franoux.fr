@@ -10,7 +10,7 @@ export const siteConfig = {
   },
 
   social: {
-    github: "https://github.com/ton-github",
-    linkedin: "https://linkedin.com/in/ton-linkedin",
+    github: "https://github.com/teofeo",
+    linkedin: "https://www.linkedin.com/in/t%C3%A9o-franoux/",
   },
 } as const;

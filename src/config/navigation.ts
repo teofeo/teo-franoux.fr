@@ -13,17 +13,17 @@ export const navigation = [
   },
   {
     label: "Blog",
-    href: "/blog",
+    href: "/blog/",
     icon: BookOpen,
   },
   {
     label: "Homelab",
-    href: "/homelab",
+    href: "/homelab/",
     icon: Server,
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "/contact/",
     icon: Mail,
   },
 ] as const;

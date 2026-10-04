@@ -32,7 +32,13 @@ interface Props {
 
 const { page } = Astro.props;
 
-const posts: CollectionEntry<"blog">[] = await getCollection("blog");
+const showDrafts = import.meta.env.SHOW_DRAFTS === "true";
+const posts: CollectionEntry<"blog">[] = await getCollection(
+    "blog",
+    ({ data }) => {
+        return showDrafts ? true : !data.draft;
+    },
+);
 
 const sortedPosts = posts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -71,31 +77,29 @@ const features = [
     title="Blog - Téo Franoux"
     description="Articles sur le DevOps, l'infrastructure, le cloud et mon homelab."
 >
-    <main>
-        <PageHero
-            eyebrow="Mes articles"
-            title="Blog"
-            description="Mes articles sur l'infrastructure, le DevOps, le cloud et mes différents projets."
+    <PageHero
+        eyebrow="Mes articles"
+        title="Blog"
+        description="Mes articles sur l'infrastructure, le DevOps, le cloud et mes différents projets."
+    />
+
+    <InfoGrid features={features} />
+
+    <section class="mx-auto max-w-7xl px-4 py-12 md:py-16">
+        <div class="mt-8 flex justify-end">
+            <div class="w-full max-w-xl">
+                <SearchBar />
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <PostGrid posts={page.data} />
+        </div>
+
+        <Pagination
+            currentPage={page.currentPage}
+            totalPages={page.lastPage}
+            baseUrl="/blog"
         />
-
-        <InfoGrid features={features} />
-
-        <section class="mx-auto max-w-7xl px-4 py-12 md:py-16">
-            <div class="mt-8 flex justify-end">
-                <div class="w-full max-w-xl">
-                    <SearchBar />
-                </div>
-            </div>
-
-            <div class="mt-12">
-                <PostGrid posts={page.data} />
-            </div>
-
-            <Pagination
-                currentPage={page.currentPage}
-                totalPages={page.lastPage}
-                baseUrl="/blog"
-            />
-        </section>
-    </main>
+    </section>
 </Layout>

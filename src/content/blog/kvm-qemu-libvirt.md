@@ -173,7 +173,7 @@ libvirt se connecte à un hyperviseur via une **URI** :
 
 - **`qemu:///system`** : les VMs système, gérées par root. C'est ce que tu veux dans 99 % des cas (serveur, homelab).
 - **`qemu:///session`** : les VMs de ton utilisateur, sans privilèges (plus limité côté réseau).
-- **`qemu+ssh://admin@serveur/system`** : gérer les VMs d'une **machine distante via SSH** 🔥 (si tu n'es pas à l'aise avec SSH, j'ai écrit [un guide complet](/blog/ssh-guide-debutant)).
+- **`qemu+ssh://admin@serveur/system`** : gérer les VMs d'une **machine distante via SSH** 🔥 (si tu n'es pas à l'aise avec SSH, j'ai écrit [un guide complet](/blog/ssh-guide-debutant/)).
 
 ---
 
