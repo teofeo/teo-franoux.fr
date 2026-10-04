@@ -13,6 +13,7 @@ interface Props {
     description?: string;
     mainClass?: string;
     image?: string;
+    imageAlt?: string;
     type?: "website" | "article";
     jsonLd?: Record<string, unknown>[];
     noindex?: boolean;
@@ -22,7 +23,8 @@ const {
     title = siteConfig.title,
     description = siteConfig.description,
     mainClass,
-    image = "/android-chrome-512x512.png",
+    image = "/og-image.png",
+    imageAlt = siteConfig.title,
     type = "website",
     jsonLd = [],
     noindex = false,
@@ -72,11 +74,16 @@ const imageUrl = new URL(image, Astro.site);
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={imageUrl} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={imageAlt} />
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:image:alt" content={imageAlt} />
 
         {jsonLd.map((schema) => (
             <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, "\\u003c")} />
