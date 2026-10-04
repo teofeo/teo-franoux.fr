@@ -20,7 +20,7 @@ const minutesRead = remarkPluginFrontmatter.minutesRead;
     data-post-description={post.data.description}
     data-post-tags={post.data.tags.join(" ")}
 >
-    <a href={`/blog/${post.id}`} class="block relative z-10">
+    <a href={`/blog/${post.id}/`} class="block relative z-10">
         <div class="flex items-center gap-3 text-sm text-muted-foreground">
             <time datetime={post.data.pubDate.toISOString()}>
                 {post.data.pubDate.toLocaleDateString("fr-FR", {

@@ -5,9 +5,40 @@ import Hero from "@/components/sections/Hero.astro";
 import About from "@/components/sections/About.astro";
 import HomelabPreview from "@/components/sections/HomelabPreview.astro";
 import LatestPosts from "@/components/sections/LatestPosts.astro";
+
+import { siteConfig } from "@/config/site";
+
+const siteUrl = new URL("/", Astro.site).href;
+
+const jsonLd = [
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${siteUrl}#website`,
+        name: siteConfig.name,
+        url: siteUrl,
+        description: siteConfig.description,
+        inLanguage: "fr-FR",
+        publisher: { "@id": `${siteUrl}#person` },
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": `${siteUrl}#person`,
+        name: siteConfig.author.name,
+        url: siteUrl,
+        jobTitle: "Étudiant DevOps & Infrastructure",
+        address: {
+            "@type": "PostalAddress",
+            addressLocality: "Nancy",
+            addressCountry: "FR",
+        },
+        sameAs: Object.values(siteConfig.social),
+    },
+];
 ---
 
-<Layout>
+<Layout jsonLd={jsonLd}>
     <Hero />
 
     <About />

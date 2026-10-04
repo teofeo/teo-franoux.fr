@@ -12,13 +12,24 @@ interface Props {
     title?: string;
     description?: string;
     mainClass?: string;
+    image?: string;
+    type?: "website" | "article";
+    jsonLd?: Record<string, unknown>[];
+    noindex?: boolean;
 }
 
 const {
     title = siteConfig.title,
     description = siteConfig.description,
     mainClass,
+    image = "/android-chrome-512x512.png",
+    type = "website",
+    jsonLd = [],
+    noindex = false,
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -47,6 +58,29 @@ const {
         <meta name="description" content={description} />
 
         <title>{title}</title>
+
+        {noindex ? (
+            <meta name="robots" content="noindex" />
+        ) : (
+            <link rel="canonical" href={canonicalUrl} />
+        )}
+
+        <meta property="og:type" content={type} />
+        <meta property="og:site_name" content={siteConfig.name} />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={imageUrl} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+
+        {jsonLd.map((schema) => (
+            <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, "\\u003c")} />
+        ))}
 
         <link rel="sitemap" href="/sitemap-index.xml" />
 

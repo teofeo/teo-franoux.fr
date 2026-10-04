@@ -71,7 +71,7 @@ Passer à l'implémentation concrète.
 * Prérequis 2
 * Prérequis 3
 
-### Étape 1 — Première étape
+### Étape 1 - Première étape
 
 Explication.
 
@@ -79,7 +79,7 @@ Explication.
 # Commande
 ```
 
-### Étape 2 — Deuxième étape
+### Étape 2 - Deuxième étape
 
 Explication.
 
@@ -87,7 +87,7 @@ Explication.
 # Commande
 ```
 
-### Étape 3 — Vérification
+### Étape 3 - Vérification
 
 Expliquer comment vérifier que tout fonctionne.
 

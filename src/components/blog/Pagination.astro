@@ -10,8 +10,8 @@ interface Props {
 const { currentPage, totalPages, baseUrl = "/blog" } = Astro.props;
 
 const getPageUrl = (page: number) => {
-    if (page === 1) return baseUrl;
-    return `${baseUrl}/${page}`;
+    if (page === 1) return `${baseUrl}/`;
+    return `${baseUrl}/${page}/`;
 };
 
 const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
